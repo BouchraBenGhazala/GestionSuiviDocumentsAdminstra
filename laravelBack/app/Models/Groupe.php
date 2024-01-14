@@ -24,7 +24,7 @@ class Groupe extends Model
     {
         return $this->belongsTo(Filliere::class);
     }
-    public function etudiant()
+    public function etudiants()
     {
         return $this->hasMany(Etudiant::class);
     }

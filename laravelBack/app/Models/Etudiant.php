@@ -20,7 +20,7 @@ class Etudiant extends Model
         'datenais',
         'group_id'
     ];
-    function group(){
+    public function groupe(){
         return $this->belongsTo(Groupe::class);
     }
     public function documents()

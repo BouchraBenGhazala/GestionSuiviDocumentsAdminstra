@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id(); // Auto-incremental primary key
             $table->string('libelle');
             $table->integer('nombre');
-
+            $table->timestamps();
 
         });
     }

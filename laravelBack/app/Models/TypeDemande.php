@@ -13,8 +13,8 @@ class TypeDemande extends Model
         'libelle',
          
     ];
-    public function type_demande()
+    public function demande()
     {
-        return $this->hasMany(TypeDemande::class);
+        return $this->hasMany(Demande::class);
     }
 }

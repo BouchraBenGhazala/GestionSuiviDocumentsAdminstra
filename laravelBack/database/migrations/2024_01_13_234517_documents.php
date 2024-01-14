@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('libelle');
 
             $table->unsignedBigInteger('admin_id');
-            $table->unsignedBigInteger('etudiant_id')->nullable;
+            $table->unsignedBigInteger('etudiant_id')->nullable();
 
             $table->softDeletes();
             $table->timestamps(); // Created at and Updated at timestamps
