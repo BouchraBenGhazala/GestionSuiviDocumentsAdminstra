@@ -14,18 +14,16 @@ return new class extends Migration
         Schema::create('etudiants', function (Blueprint $table) {
             $table->id();
             $table->string('cne')->unique();
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('email')->unique();
+            $table->string('code_apogee')->unique();
             $table->string('image'); // Add the image column
-            $table->string('mdp');
             $table->string('tel');
             $table->date('datenais');
-            $table->unsignedBigInteger('group_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
 
-            $table->foreign('group_id')->references('id')->on('groupes')->onDelete('cascade');
+
         });
     }
 

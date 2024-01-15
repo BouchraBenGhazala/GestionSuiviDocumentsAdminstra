@@ -11,20 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('demandes', function (Blueprint $table) {
+        Schema::create('terrain_de_sport', function (Blueprint $table) {
             $table->id(); // Auto-incremental primary key
-            $table->string('etat');
-            $table->string('type_demande');
-            $table->string('description');
-            $table->string('niveau');
-            $table->string('filliere'); 
-            $table->date('annee'); 
+            $table->date('date');
+            $table->time('heure_debut');
+            $table->time('heure_fin');
 
-            $table->unsignedBigInteger('etudiant_id')->nullable();
+            $table->unsignedBigInteger('demande_id')->nullable();
 
             $table->softDeletes();
             $table->timestamps(); // Created at and Updated at timestamps
-            $table->foreign('etudiant_id')->references('id')->on('etudiants');
+            $table->foreign('demande_id')->references('id')->on('demandes');
 
 
         });
@@ -35,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('demandes');
+        Schema::dropIfExists('terrain_de_sport');
     }
 };

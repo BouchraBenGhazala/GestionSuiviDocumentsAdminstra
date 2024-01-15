@@ -5,16 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TypeDemande extends Model
+class TerrainSport extends Model
 {
     use HasFactory;
-    protected $table ='type_demandes';
+    protected $table ='terrain_de_sport';
     protected $fillable = [
-        'libelle',
-         
+        'date',
+        'heure_debut',
+        'heure_fin',
+        'demande_id',
+
+
     ];
+
+
     public function demande()
     {
-        return $this->hasMany(Demande::class);
+        return $this->belongsTo(Demande::class);
     }
 }

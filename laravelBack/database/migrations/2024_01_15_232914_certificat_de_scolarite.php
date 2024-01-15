@@ -11,17 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('documents', function (Blueprint $table) {
+        Schema::create('certificat_de_scolarite', function (Blueprint $table) {
             $table->id(); // Auto-incremental primary key
-            $table->string('libelle');
+            $table->date('date');
+            $table->string('lieu_de_naissance');
 
-            $table->unsignedBigInteger('admin_id');
-            $table->unsignedBigInteger('etudiant_id')->nullable();
+            $table->unsignedBigInteger('demande_id')->nullable();
 
             $table->softDeletes();
             $table->timestamps(); // Created at and Updated at timestamps
-            $table->foreign('admin_id')->references('id')->on('admin')->onDelete('cascade');
-            $table->foreign('etudiant_id')->references('id')->on('etudiants')->onDelete('cascade');
+            $table->foreign('demande_id')->references('id')->on('demandes');
+
+
         });
     }
 
@@ -30,7 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('documents');
-
+        Schema::dropIfExists('certificat_de_scolarite');
     }
 };

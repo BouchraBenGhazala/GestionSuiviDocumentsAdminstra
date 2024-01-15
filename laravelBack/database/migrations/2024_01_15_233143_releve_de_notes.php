@@ -11,14 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admin', function (Blueprint $table) {
+        Schema::create('releve_de_notes', function (Blueprint $table) {
             $table->id(); // Auto-incremental primary key
-            $table->string('nom');
-            $table->string('email');
-            $table->string('mdp');
+            $table->string('niveau');
+            $table->date('annee');
+            $table->string('session');
+
+            $table->unsignedBigInteger('demande_id')->nullable();
 
             $table->softDeletes();
-            $table->timestamps();
+            $table->timestamps(); // Created at and Updated at timestamps
+            $table->foreign('demande_id')->references('id')->on('demandes');
+
+
         });
     }
 
@@ -27,7 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admin');
-
+        Schema::dropIfExists('releve_de_notes');
     }
 };

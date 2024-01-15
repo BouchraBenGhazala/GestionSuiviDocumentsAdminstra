@@ -11,22 +11,12 @@ class Etudiant extends Model
     protected $table ='etudiants';
     protected $fillable = [
         'cne',
-        'nom',
-        'prenom',
-        'email',
+        'code_apogee',
         'image',
-        'mdp',
         'tel',
         'datenais',
-        'group_id'
     ];
-    public function groupe(){
-        return $this->belongsTo(Groupe::class);
-    }
-    public function documents()
-    {
-        return $this->hasMany(Document::class);
-    }
+ 
     public function demandes()
     {
         return $this->hasMany(Demande::class);
