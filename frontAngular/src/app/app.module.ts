@@ -10,6 +10,7 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { SignupcomponentComponent } from './components/signup/signupcomponent/signupcomponent.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BouchraService } from './services/bouchra.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [BouchraService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

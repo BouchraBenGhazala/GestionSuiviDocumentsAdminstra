@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { BouchraService } from '../../services/bouchra.service';
 
 @Component({
   selector: 'app-login',
@@ -11,14 +11,16 @@ export class LoginComponent implements OnInit {
     email:null,
     password:null
   }
-  constructor(private http:HttpClient) {
+  constructor(private bouchra:BouchraService) {
 
   }
   public error=null;
 
+  
+
   onSubmit() {
     // console.log(this.form);
-    return this.http.post('http://localhost:8000/api/login',this.form).subscribe(
+    this.bouchra.login(this.form).subscribe(
       data=> console.log(data),
       error=> this.handleError(error),
     );
