@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,8 @@ import { FormulaireCertificatScolariteComponent } from './formulaire-certificat-
 import { FormulaireConventionStageComponent } from './formulaire-convention-stage/formulaire-convention-stage.component';
 import { FormulaireReleveNotesComponent } from './formulaire-releve-notes/formulaire-releve-notes.component';
 import { FormulaireTerrainSportComponent } from './formulaire-terrain-sport/formulaire-terrain-sport.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -33,10 +36,13 @@ import { FormulaireTerrainSportComponent } from './formulaire-terrain-sport/form
     FormulaireCertificatScolariteComponent,
     FormulaireConventionStageComponent,
     FormulaireReleveNotesComponent,
-    FormulaireTerrainSportComponent
+    FormulaireTerrainSportComponent,
+    SidebarComponent
+
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
