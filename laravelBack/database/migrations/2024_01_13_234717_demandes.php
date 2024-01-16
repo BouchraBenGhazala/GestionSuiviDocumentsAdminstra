@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('demandes', function (Blueprint $table) {
             $table->id(); // Auto-incremental primary key
             $table->string('etat');
-            $table->string('type_demande');
+            $table->string('type_document');
             $table->string('description');
             $table->string('niveau');
-            $table->string('filliere'); 
+            $table->string('filiere'); 
             $table->date('annee'); 
 
             $table->unsignedBigInteger('etudiant_id')->nullable();

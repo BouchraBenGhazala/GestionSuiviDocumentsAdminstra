@@ -21,6 +21,6 @@ class TerrainSport extends Model
 
     public function demande()
     {
-        return $this->belongsTo(Demande::class);
+        return $this->belongsTo(Demande::class, 'demande_id');
     }
 }

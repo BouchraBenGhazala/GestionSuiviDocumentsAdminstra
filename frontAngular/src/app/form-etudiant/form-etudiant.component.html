@@ -9,13 +9,19 @@
       <option *ngFor="let filiere of filieres" [value]="filiere">{{ filiere }}</option>
     </select>
   
-    <label for="typeDocument">Type de Document</label>
-    <select formControlName="typeDocument">
+    <label for="type_document">Type de Document</label>
+    <select formControlName="type_document">
       <option *ngFor="let type of typesDocuments" [value]="type">{{ type }}</option>
     </select>
-  
     <label for="description">Description</label>
     <textarea formControlName="description"></textarea>
+    <app-formulaire-attestation-bourse *ngIf="getSelectedDocumentType() === 'Attestation De Bourse'" [documentForm]="documentForm"></app-formulaire-attestation-bourse>
+    <app-formulaire-certificat-scolarite *ngIf="getSelectedDocumentType() === 'Certificat De Scolarite'" [certificatScolariteForm]="documentForm"></app-formulaire-certificat-scolarite>
+    <app-formulaire-convention-stage *ngIf="getSelectedDocumentType() === 'Convention De Stage'" [conventionStageForm]="documentForm"></app-formulaire-convention-stage>
+    
+    <app-formulaire-releve-notes *ngIf="getSelectedDocumentType() === 'Relevé De Notes'" [releveNotesForm]="documentForm"></app-formulaire-releve-notes>
+    <app-formulaire-terrain-sport *ngIf="getSelectedDocumentType() === 'Terrain De Sport'" [terrainSportForm]="documentForm"></app-formulaire-terrain-sport>
+    
   
     <button type="submit" [disabled]="!documentForm.valid">Soumettre</button>
   </form>

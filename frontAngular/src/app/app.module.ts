@@ -13,6 +13,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { BouchraService } from './services/bouchra.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import {FormEtudiantComponent} from './form-etudiant/form-etudiant.component';
+import { FormulaireAttestationBourseComponent } from './formulaire-attestation-bourse/formulaire-attestation-bourse.component';
+import { FormulaireCertificatScolariteComponent } from './formulaire-certificat-scolarite/formulaire-certificat-scolarite.component';
+import { FormulaireConventionStageComponent } from './formulaire-convention-stage/formulaire-convention-stage.component';
+import { FormulaireReleveNotesComponent } from './formulaire-releve-notes/formulaire-releve-notes.component';
+import { FormulaireTerrainSportComponent } from './formulaire-terrain-sport/formulaire-terrain-sport.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,12 @@ import {FormEtudiantComponent} from './form-etudiant/form-etudiant.component';
     RequestResetComponent,
     ResponseResetComponent,
     SignupcomponentComponent,
-    FormEtudiantComponent
+    FormEtudiantComponent,
+    FormulaireAttestationBourseComponent,
+    FormulaireCertificatScolariteComponent,
+    FormulaireConventionStageComponent,
+    FormulaireReleveNotesComponent,
+    FormulaireTerrainSportComponent
   ],
   imports: [
     BrowserModule,
