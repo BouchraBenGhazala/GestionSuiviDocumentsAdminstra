@@ -82,7 +82,9 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => JWTFactory::getTTL() * 60,
-            'user' => auth()->user()->nom
+            'user' => auth()->user()->nom,
+            'role' => auth()->user()->role,
         ]);
     }
 }
+
