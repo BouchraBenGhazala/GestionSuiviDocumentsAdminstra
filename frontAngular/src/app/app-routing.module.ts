@@ -5,16 +5,15 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ProfileComponent } from './components/profile/profile.component';
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { SignupcomponentComponent } from './components/signup/signupcomponent/signupcomponent.component';
-
+import {FormEtudiantComponent} from './form-etudiant/form-etudiant.component';
 const appRoutes: Routes = [
   {
     path:'login',
     component: LoginComponent,
   },
   {
-    path:'**',
-    redirectTo:'login',
-    pathMatch:'full'
+    path:'form',
+    component:FormEtudiantComponent,
   },
   {
     path:'signup',

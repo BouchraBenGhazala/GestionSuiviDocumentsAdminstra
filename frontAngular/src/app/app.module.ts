@@ -11,6 +11,8 @@ import { ResponseResetComponent } from './components/password/response-reset/res
 import { SignupcomponentComponent } from './components/signup/signupcomponent/signupcomponent.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BouchraService } from './services/bouchra.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import {FormEtudiantComponent} from './form-etudiant/form-etudiant.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,14 @@ import { BouchraService } from './services/bouchra.service';
     ProfileComponent,
     RequestResetComponent,
     ResponseResetComponent,
-    SignupcomponentComponent
+    SignupcomponentComponent,
+    FormEtudiantComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [BouchraService],
