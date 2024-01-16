@@ -10,11 +10,17 @@ const appRoutes: Routes = [
   {
     path:'login',
     component: LoginComponent,
+
   },
   {
     path:'form',
     component:FormEtudiantComponent,
   },
+  // {
+  //   path:'**',
+  //   redirectTo:'login',
+  //   pathMatch:'full'
+  // },
   {
     path:'signup',
     component: SignupcomponentComponent,
