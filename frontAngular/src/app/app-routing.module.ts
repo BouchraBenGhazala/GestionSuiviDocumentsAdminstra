@@ -5,6 +5,7 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ProfileComponent } from './components/profile/profile.component';
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { SignupcomponentComponent } from './components/signup/signupcomponent/signupcomponent.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const appRoutes: Routes = [
   {
@@ -33,6 +34,10 @@ const appRoutes: Routes = [
     path:'response-password-reset',
     component: ResponseResetComponent,
   },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  }
 ];
 
 @NgModule({

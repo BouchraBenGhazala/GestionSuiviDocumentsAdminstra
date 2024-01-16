@@ -1,4 +1,6 @@
 <app-navbar></app-navbar>
-<div class="container">
+<app-sidebar (onToggleSideNav)="handleCollapsedChange($event)"></app-sidebar>
+<div [class]='sideNav.collapsed ? "main-increase" : "main-decrease"' >
   <router-outlet></router-outlet>
 </div>
+

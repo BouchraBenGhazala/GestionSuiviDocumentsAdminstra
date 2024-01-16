@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Spatie\FlareClient\Api;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-// Route::get('/data', [ApiController::class, 'getData']);
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Route::get('/data', [ApiController::class, 'getData']);
 
 Route::group(
     [
@@ -31,3 +33,9 @@ Route::group(
         Route::post('refresh', 'AuthController@refresh');
         Route::post('me', 'AuthController@me');
     });
+
+Route::get('/getDemandes', [ApiController::class, 'getDemandes']);
+
+// Route::get('/get')
+
+Route::get('/getFiltredDemandes/{state}', [ApiController::class, 'getFiltresDemandes'])->where('state', '^(all|approved|pending)$');

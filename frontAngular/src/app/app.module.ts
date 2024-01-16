@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,8 @@ import { ResponseResetComponent } from './components/password/response-reset/res
 import { SignupcomponentComponent } from './components/signup/signupcomponent/signupcomponent.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BouchraService } from './services/bouchra.service';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -20,10 +23,13 @@ import { BouchraService } from './services/bouchra.service';
     ProfileComponent,
     RequestResetComponent,
     ResponseResetComponent,
-    SignupcomponentComponent
+    SignupcomponentComponent,
+    SidebarComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule
