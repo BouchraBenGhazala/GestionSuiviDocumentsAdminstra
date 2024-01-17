@@ -1,0 +1,79 @@
+<!-- <div class="l-navbar" id="nav-bar">
+    <nav class="nav">
+      <div>
+        <a href="#" class="nav_logo">
+          <i class='bx bx-layer nav_logo-icon'></i>
+          <span class="nav_logo-name">BBBootstrap</span>
+        </a>
+        <div class="nav_list">
+          <a href="#" class="nav_link active">
+            <i class='bx bx-grid-alt nav_icon'></i>
+            <span class="nav_name">Dashboard</span>
+          </a>
+          <a href="#" class="nav_link">
+            <i class='bx bx-user nav_icon'></i>
+            <span class="nav_name">Users</span>
+          </a>
+          <a href="#" class="nav_link">
+            <i class='bx bx-message-square-detail nav_icon'></i>
+            <span class="nav_name">Messages</span>
+          </a>
+          <a href="#" class="nav_link">
+            <i class='bx bx-bookmark nav_icon'></i>
+            <span class="nav_name">Bookmark</span>
+          </a>
+          <a href="#" class="nav_link">
+            <i class='bx bx-folder nav_icon'></i>
+            <span class="nav_name">Files</span>
+          </a>
+          <a href="#" class="nav_link">
+            <i class='bx bx-bar-chart-alt-2 nav_icon'></i>
+            <span class="nav_name">Stats</span>
+          </a>
+        </div>
+      </div>
+      <a href="#" class="nav_link">
+        <i class='bx bx-log-out nav_icon'></i>
+        <span class="nav_name">SignOut</span>
+      </a>
+    </nav>
+  </div>
+  Container Main start
+  <div class="height-100 bg-dark main ">
+    <h4 class="text text-danger">Main Components</h4>
+  </div>
+  Container Main end -->
+
+  <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+    <div class="logo-container">
+        <button class="logo" (click)="toggleCollapse()">
+          <img src="../../assets/ensam-mini.png" alt="">
+        </button>
+        <div class="logo-text" @fadeInOut *ngIf="collapsed">
+          ENSAM Casablanca
+        </div>
+        <button class="btn-close" @rotate *ngIf="collapsed" (click)="closeSidenav()">
+            <i class="fa fa-times close-icon"></i>
+        </button>
+    </div>
+    <div class="scrollwrap scrollwrap_delayed mt-4">
+        <ul class="sidenav-nav">
+            <li class="sidenav-nav-item my-3" *ngFor="let data of navData; last as l">
+                <a class="sidenav-nav-link" 
+                    *ngIf="!data.items || (data.items && data.items.length === 0)"
+                    [routerLink]="[data.routeLink]" 
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}"
+                    (click)="shrinkItems(data)"
+                    [ngClass]="{'last-item':l}"
+                    >
+                    <i class="sidenav-link-icon" [class]="data.icon"></i>
+                    <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
+                        {{data.label}}
+                    </span>
+                </a>
+            </li>
+        </ul>
+       
+    </div>
+</div>

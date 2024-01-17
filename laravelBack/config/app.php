@@ -184,5 +184,10 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
-
+    'trusted_proxies' => [
+        '127.0.0.1', // Ajoutez ici les adresses IP de confiance
+    ],
+    
+    'proxies' => '*',
+    
 ];

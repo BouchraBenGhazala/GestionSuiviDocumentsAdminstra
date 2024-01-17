@@ -8,13 +8,12 @@ import { DemandesData } from '../../services/dashboard/demande-data.service';
 })
 export class DashboardComponent implements OnInit{
    
-  demandes: any;
+  demandes: any=[];
 
 
   constructor(private demandesData: DemandesData){}
 
   ngOnInit(): void {
-    
     this.getDemandesData();
     console.log(typeof(this.demandes), this.demandes);
   }
@@ -27,10 +26,10 @@ export class DashboardComponent implements OnInit{
   }
 
 
-   getFiltredDemande(state: String){
-      this.demandesData.getFiltredData().subscribe(res => {
-        console.log(res);
-        this.demandes = res;
-      })
-  }
+  //  getFiltredDemande(state: String){
+  //     this.demandesData.getFiltredData().subscribe(res => {
+  //       console.log(res);
+  //       this.demandes = res;
+  //     })
+  // }
 }
