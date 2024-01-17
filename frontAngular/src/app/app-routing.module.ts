@@ -12,6 +12,8 @@ import { Profile2Component } from './components/profile2/profile2.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AdministrateurComponent } from './components/administrateur/administrateur.component';
 import { EtudiantComponent } from './components/etudiant/etudiant.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CommonModule } from '@angular/common';
 
 const appRoutes: Routes = [
   {
@@ -63,10 +65,14 @@ const appRoutes: Routes = [
     path:'response-password-reset',
     component: ResponseResetComponent,
   },
+  {
+    path: 'dashboard',
+    component: DashboardComponent
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes),CommonModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

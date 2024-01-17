@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,8 +12,15 @@ import { ResponseResetComponent } from './components/password/response-reset/res
 import { SignupcomponentComponent } from './components/signup/signupcomponent/signupcomponent.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BouchraService } from './services/bouchra.service';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {FormEtudiantComponent} from './form-etudiant/form-etudiant.component';
+import { FormulaireAttestationBourseComponent } from './formulaire-attestation-bourse/formulaire-attestation-bourse.component';
+import { FormulaireCertificatScolariteComponent } from './formulaire-certificat-scolarite/formulaire-certificat-scolarite.component';
+import { FormulaireConventionStageComponent } from './formulaire-convention-stage/formulaire-convention-stage.component';
+import { FormulaireReleveNotesComponent } from './formulaire-releve-notes/formulaire-releve-notes.component';
+import { FormulaireTerrainSportComponent } from './formulaire-terrain-sport/formulaire-terrain-sport.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { Profile2Component } from './components/profile2/profile2.component';
 import { AdministrateurComponent } from './components/administrateur/administrateur.component';
 import { EtudiantComponent } from './components/etudiant/etudiant.component';
@@ -37,7 +44,8 @@ import { EtudiantComponent } from './components/etudiant/etudiant.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [BouchraService],
   bootstrap: [AppComponent]

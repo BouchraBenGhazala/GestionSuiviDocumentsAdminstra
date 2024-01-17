@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Demande;
 
 class AttestationBourse extends Model
 {
@@ -14,13 +15,11 @@ class AttestationBourse extends Model
         'lieu_de_naissance',
         'type_bourse',
         'demande_id',
-
-
     ];
 
 
     public function demande()
     {
-        return $this->belongsTo(Demande::class);
+        return $this->belongsTo(Demande::class, 'demande_id');
     }
 }
