@@ -9,8 +9,7 @@ import { CommonModule } from '@angular/common';
 interface SideNavToggle {
   screenWidth: number;
   collapsed: boolean;
-}
-
+};
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -27,12 +26,13 @@ interface SideNavToggle {
         )
       ])
     ])
-  ]
+  ],
+  
 })
 export class SidebarComponent implements OnInit {
 
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
-  collapsed = true;
+  collapsed = false;
   screenWidth = 0;
   navData = navbarData;
   multiple: boolean = false;
