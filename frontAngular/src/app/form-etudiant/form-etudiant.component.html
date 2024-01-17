@@ -15,7 +15,7 @@
     </select>
     <label for="description">Description</label>
     <textarea formControlName="description"></textarea>
-    <app-formulaire-attestation-bourse *ngIf="getSelectedDocumentType() === 'Attestation De Bourse'" [documentForm]="documentForm"></app-formulaire-attestation-bourse>
+    <app-formulaire-attestation-bourse  *ngIf="getSelectedDocumentType() === 'Attestation De Bourse'" [documentForm]="documentForm"></app-formulaire-attestation-bourse>
     <app-formulaire-certificat-scolarite *ngIf="getSelectedDocumentType() === 'Certificat De Scolarite'" [certificatScolariteForm]="documentForm"></app-formulaire-certificat-scolarite>
     <app-formulaire-convention-stage *ngIf="getSelectedDocumentType() === 'Convention De Stage'" [conventionStageForm]="documentForm"></app-formulaire-convention-stage>
     

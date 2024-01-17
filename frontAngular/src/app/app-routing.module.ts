@@ -14,12 +14,18 @@ import { AdministrateurComponent } from './components/administrateur/administrat
 import { EtudiantComponent } from './components/etudiant/etudiant.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
+import { FormEtudiantComponent } from './form-etudiant/form-etudiant.component';
 
 const appRoutes: Routes = [
   {
     path:'login',
     component: LoginComponent,
     canActivate: [BeforeLoginService],
+
+  },
+  {
+    path:'form',
+    component: FormEtudiantComponent,
 
   },
   {

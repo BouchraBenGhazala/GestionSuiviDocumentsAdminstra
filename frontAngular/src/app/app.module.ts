@@ -37,7 +37,13 @@ import { EtudiantComponent } from './components/etudiant/etudiant.component';
     SidebarComponent,
     Profile2Component,
     AdministrateurComponent,
-    EtudiantComponent
+    EtudiantComponent,
+    FormEtudiantComponent,
+    FormulaireAttestationBourseComponent,
+    FormulaireCertificatScolariteComponent,
+    FormulaireConventionStageComponent,
+    FormulaireReleveNotesComponent,
+    FormulaireTerrainSportComponent
   ],
   imports: [
     BrowserModule,

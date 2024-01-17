@@ -10,7 +10,7 @@ class EtudiantController extends Controller
     public function getEtudiantByUserId($userId)
     {
         $etudiant = Etudiant::where('user_id', $userId)->with('user')->first();
-
+        echo($etudiant);
         if ($etudiant) {
             return response()->json([
                 'status' => 200,
