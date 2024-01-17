@@ -44,8 +44,6 @@ class DocumentController extends Controller
     Mail::to('abdoukefsi@gmail.com')->send(new ConfirmationEmail());
 
     return response()->json(['message' => 'Form submitted successfully']);
-
-
     return response()->json(['message' => 'Demande enregistrée avec succès'], 201);
 }
 
