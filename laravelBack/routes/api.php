@@ -42,4 +42,6 @@ Route::get('/getDemandes', [ApiController::class, 'getDemandes']);
 
 // Route::get('/get')
 
-Route::get('/getFiltredDemandes/{state}', [ApiController::class, 'getFiltresDemandes'])->where('state', '^(all|approved|pending)$');
+Route::get('/getFiltredDemandes/{state}', [ApiController::class, 'getFiltresDemandes'])->where('state', '^(approved|pending)$');
+
+Route::get('/getEtudiant', [ApiController::class, 'getEtudiant']);

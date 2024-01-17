@@ -6,26 +6,8 @@ import { DemandesData } from '../../services/dashboard/demande-data.service';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent implements OnInit{
+export class DashboardComponent{
    
-  demandes: any=[];
-
-
-  constructor(private demandesData: DemandesData){}
-
-  ngOnInit(): void {
-    this.getDemandesData();
-    console.log(typeof(this.demandes), this.demandes);
-  }
-
-  getDemandesData(){
-    this.demandesData.getAllData().subscribe(res => {
-      console.log(res);
-      this.demandes = res;
-    })
-  }
-
-
   //  getFiltredDemande(state: String){
   //     this.demandesData.getFiltredData().subscribe(res => {
   //       console.log(res);

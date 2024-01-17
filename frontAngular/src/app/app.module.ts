@@ -23,6 +23,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+import { TotalComponent } from './components/dashboard/total/total.component';
+import { ApprouvedComponent } from './components/dashboard/approuved/approuved.component';
+import { PendingComponent } from './components/dashboard/pending/pending.component';
+import { MainComponent } from './components/dashboard/main/main.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +46,10 @@ import { AppRoutingModule } from './app-routing.module';
     FormulaireReleveNotesComponent,
     FormulaireTerrainSportComponent,
     SidebarComponent,
+    TotalComponent,
+    ApprouvedComponent,
+    PendingComponent,
+    MainComponent,
   ],
   imports: [
     CommonModule,
@@ -51,7 +59,7 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
   ],
   providers: [BouchraService],
   bootstrap: [AppComponent]
