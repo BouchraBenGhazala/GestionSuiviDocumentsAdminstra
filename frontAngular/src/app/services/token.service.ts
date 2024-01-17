@@ -41,4 +41,29 @@ export class TokenService {
   loggedIn(){
     return this.isValid();
   }
+  // Dans TokenService
+
+  getRole() {
+    const token = this.get();
+    if (token) {
+        const payload = this.payload(token);
+        if (payload) {
+            console.log(payload)
+            return payload.role;
+        }
+    }
+    return null;
+  }
+  getUsername() {
+    const token = this.get();
+    if (token) {
+      const payload = this.payload(token);
+      if (payload) {
+        console.log(payload.username);
+        return payload.username;
+      }
+    }
+    return null;
+  }
+
 }

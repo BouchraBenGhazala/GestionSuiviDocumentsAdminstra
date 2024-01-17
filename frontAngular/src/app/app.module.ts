@@ -15,6 +15,8 @@ import { BouchraService } from './services/bouchra.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { Profile2Component } from './components/profile2/profile2.component';
+import { AdministrateurComponent } from './components/administrateur/administrateur.component';
+import { EtudiantComponent } from './components/etudiant/etudiant.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { Profile2Component } from './components/profile2/profile2.component';
     ResponseResetComponent,
     SignupcomponentComponent,
     SidebarComponent,
-    Profile2Component
+    Profile2Component,
+    AdministrateurComponent,
+    EtudiantComponent
   ],
   imports: [
     BrowserModule,

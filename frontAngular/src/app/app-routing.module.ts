@@ -9,22 +9,40 @@ import { BeforeLoginService } from './services/before-login.service';
 import { CanActivate } from '@angular/router';
 import { AfterLoginService } from './services/after-login.service';
 import { Profile2Component } from './components/profile2/profile2.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AdministrateurComponent } from './components/administrateur/administrateur.component';
+import { EtudiantComponent } from './components/etudiant/etudiant.component';
 
 const appRoutes: Routes = [
   {
     path:'login',
     component: LoginComponent,
     canActivate: [BeforeLoginService],
+
   },
   {
     path:'profile2',
     component: Profile2Component,
-    canActivate: [AfterLoginService],
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'admin' }, 
   },
   {
-    path:'admin',
-    component: LoginComponent,
-    canActivate: [AfterLoginService]
+    path:'profile',
+    component: ProfileComponent,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'etudiant' },  
+  },
+  {
+    path:'administrateur',
+    component: AdministrateurComponent,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'admin' },  
+  },
+  {
+    path:'etudiant',
+    component: EtudiantComponent,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'etudiant' },  
   },
   // {
   //   path:'**',
@@ -36,11 +54,7 @@ const appRoutes: Routes = [
     component: SignupcomponentComponent,
     canActivate: [AfterLoginService]
   },
-  {
-    path:'profile',
-    component: ProfileComponent,
-    canActivate: [AfterLoginService]
-  },
+
   {
     path:'request-password-reset',
     component: RequestResetComponent,

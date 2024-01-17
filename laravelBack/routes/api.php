@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EtudiantController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +27,10 @@ Route::group(
 
     ], function () {
         Route::post('login', [AuthController::class, 'login']);
-        // Route::post('login', 'AuthController@login');
         Route::post('logout', 'AuthController@logout');
         Route::post('refresh', 'AuthController@refresh');
         Route::post('me', 'AuthController@me');
+
+        Route::get('/etudiants/user/{userId}', [EtudiantController::class, 'getEtudiantByUserId']);
+
     });

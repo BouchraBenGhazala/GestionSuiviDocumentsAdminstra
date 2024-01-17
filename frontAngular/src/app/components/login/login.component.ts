@@ -39,15 +39,31 @@ export class LoginComponent implements OnInit {
   handleError(error:any){
     this.error=error.error.error;
   }
-  handleResponse(data:any){
-    this.token.handle(data.access_token);
-    this.auth.changeAuthStatus(true);
+// Dans LoginComponent
 
-    this.router.navigateByUrl('/profile');
+handleResponse(data: any) {
+  this.token.handle(data.access_token);
+  this.auth.changeAuthStatus(true);
 
-    
+  const userRole = this.token.getRole();
+  const username = data.user_nom;  // Add this line to get the username from the response
+  const user_prenom = data.user_prenom;  // Add this line to get the username from the response
+  const userId = data.userId;  
 
+  console.log(userRole)
+  console.log(username)
+  localStorage.setItem('username', username);  
+  localStorage.setItem('userprenom', user_prenom);  
+  localStorage.setItem('userId', userId);  
+  if (userRole === 'etudiant') {
+    this.router.navigateByUrl('/etudiant');
+  } else if (userRole === 'admin') {
+    this.router.navigateByUrl('/administrateur');
+  } else {
+    this.router.navigateByUrl('/login');
   }
+}
+
   ngOnInit(){
 
   }

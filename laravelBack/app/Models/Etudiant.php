@@ -15,10 +15,15 @@ class Etudiant extends Model
         'image',
         'tel',
         'datenais',
+        'user_id',
     ];
  
     public function demandes()
     {
         return $this->hasMany(Demande::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
