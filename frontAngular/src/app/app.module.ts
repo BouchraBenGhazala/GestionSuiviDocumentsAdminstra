@@ -27,6 +27,9 @@ import { TotalComponent } from './components/dashboard/total/total.component';
 import { ApprouvedComponent } from './components/dashboard/approuved/approuved.component';
 import { PendingComponent } from './components/dashboard/pending/pending.component';
 import { MainComponent } from './components/dashboard/main/main.component';
+import { Profile2Component } from './components/profile2/profile2.component';
+import { AdministrateurComponent } from './components/administrateur/administrateur.component';
+import { EtudiantComponent } from './components/etudiant/etudiant.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { MainComponent } from './components/dashboard/main/main.component';
     ResponseResetComponent,
     SignupcomponentComponent,
     SidebarComponent,
-    DashboardComponent,
+    Profile2Component,
+    AdministrateurComponent,
+    EtudiantComponent,
     FormEtudiantComponent,
     FormulaireAttestationBourseComponent,
     FormulaireCertificatScolariteComponent,

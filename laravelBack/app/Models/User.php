@@ -57,9 +57,13 @@ class User extends Authenticatable implements JWTSubject
      *
      * @return array
      */
+
+    //  Changed
     public function getJWTCustomClaims()
     {
-        return [];
+        return [
+            'role' => $this->role,
+        ];
     }
     /**
      * The attributes that should be cast.

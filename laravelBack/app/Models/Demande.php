@@ -54,9 +54,9 @@ class Demande extends Model
     public function documentSpecificRelationship()
 {
     $specificTable = $this->getTableForTypeDocument();
-    $specificModelClass = ucfirst(camel_case($specificTable));
+    // $specificModelClass = ucfirst(camel_case($specificTable));
 
-    return $this->belongsTo("App\Models\\$specificModelClass", 'demande_id');
+    // return $this->belongsTo("App\Models\\$specificModelClass", 'demande_id');
 }
 
 

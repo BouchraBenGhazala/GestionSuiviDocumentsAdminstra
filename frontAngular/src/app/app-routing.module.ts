@@ -5,18 +5,52 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ProfileComponent } from './components/profile/profile.component';
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { SignupcomponentComponent } from './components/signup/signupcomponent/signupcomponent.component';
+import { BeforeLoginService } from './services/before-login.service';
+import { CanActivate } from '@angular/router';
+import { AfterLoginService } from './services/after-login.service';
+import { Profile2Component } from './components/profile2/profile2.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AdministrateurComponent } from './components/administrateur/administrateur.component';
+import { EtudiantComponent } from './components/etudiant/etudiant.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import {FormEtudiantComponent} from './form-etudiant/form-etudiant.component';
 import { CommonModule } from '@angular/common';
+import { FormEtudiantComponent } from './form-etudiant/form-etudiant.component';
+
 const appRoutes: Routes = [
   {
     path:'login',
     component: LoginComponent,
+    canActivate: [BeforeLoginService],
 
   },
   {
     path:'form',
-    component:FormEtudiantComponent,
+    component: FormEtudiantComponent,
+
+  },
+  {
+    path:'profile2',
+    component: Profile2Component,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'admin' }, 
+  },
+  {
+    path:'profile',
+    component: ProfileComponent,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'etudiant' },  
+  },
+  {
+    path:'administrateur',
+    component: AdministrateurComponent,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'admin' },  
+  },
+  {
+    path:'etudiant',
+    component: EtudiantComponent,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'etudiant' },  
   },
   // {
   //   path:'**',
@@ -26,11 +60,9 @@ const appRoutes: Routes = [
   {
     path:'signup',
     component: SignupcomponentComponent,
+    canActivate: [AfterLoginService]
   },
-  {
-    path:'profile',
-    component: ProfileComponent,
-  },
+
   {
     path:'request-password-reset',
     component: RequestResetComponent,
