@@ -22,7 +22,7 @@ export class TokenService {
   }
   isValid(){
     const token=this.get();
-    if(this.get()){
+    if(token){
       const payload=this.payload(token);
       if(payload){
         return (payload.iss==='http://localhost:8000/api/login')?true:false;
@@ -30,9 +30,10 @@ export class TokenService {
     }
     return false;
   }
-  payload(token:any){
-    const payload=token.split('.')[1];
-    return this.decode(payload);
+  payload(token: any) {
+    const payload = token.split('.')[1];
+    console.log(payload);
+    return payload ? this.decode(payload) : null;
   }
 
   decode(payload:any){

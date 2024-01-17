@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import { ResponseResetComponent } from './components/password/response-reset/res
 import { SignupcomponentComponent } from './components/signup/signupcomponent/signupcomponent.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BouchraService } from './services/bouchra.service';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {FormEtudiantComponent} from './form-etudiant/form-etudiant.component';
 import { FormulaireAttestationBourseComponent } from './formulaire-attestation-bourse/formulaire-attestation-bourse.component';
@@ -20,7 +21,7 @@ import { FormulaireConventionStageComponent } from './formulaire-convention-stag
 import { FormulaireReleveNotesComponent } from './formulaire-releve-notes/formulaire-releve-notes.component';
 import { FormulaireTerrainSportComponent } from './formulaire-terrain-sport/formulaire-terrain-sport.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,8 @@ import { BrowserModule } from '@angular/platform-browser';
     RequestResetComponent,
     ResponseResetComponent,
     SignupcomponentComponent,
+    SidebarComponent,
+    DashboardComponent,
     FormEtudiantComponent,
     FormulaireAttestationBourseComponent,
     FormulaireCertificatScolariteComponent,
@@ -46,7 +49,7 @@ import { BrowserModule } from '@angular/platform-browser';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [BouchraService],
   bootstrap: [AppComponent]
