@@ -21,7 +21,9 @@ import { FormulaireConventionStageComponent } from './formulaire-convention-stag
 import { FormulaireReleveNotesComponent } from './formulaire-releve-notes/formulaire-releve-notes.component';
 import { FormulaireTerrainSportComponent } from './formulaire-terrain-sport/formulaire-terrain-sport.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { CommonModule } from '@angular/common';
+import { Profile2Component } from './components/profile2/profile2.component';
+import { AdministrateurComponent } from './components/administrateur/administrateur.component';
+import { EtudiantComponent } from './components/etudiant/etudiant.component';
 
 @NgModule({
   declarations: [
@@ -33,15 +35,15 @@ import { CommonModule } from '@angular/common';
     ResponseResetComponent,
     SignupcomponentComponent,
     SidebarComponent,
-    DashboardComponent,
+    Profile2Component,
+    AdministrateurComponent,
+    EtudiantComponent,
     FormEtudiantComponent,
     FormulaireAttestationBourseComponent,
     FormulaireCertificatScolariteComponent,
     FormulaireConventionStageComponent,
     FormulaireReleveNotesComponent,
-    FormulaireTerrainSportComponent,
-    SidebarComponent
-
+    FormulaireTerrainSportComponent
   ],
   imports: [
     BrowserModule,

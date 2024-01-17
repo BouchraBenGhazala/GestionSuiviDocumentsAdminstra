@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EtudiantController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Spatie\FlareClient\Api;
@@ -26,20 +27,23 @@ Route::get('/data', [ApiController::class, 'getData']);
 //     return $request->user();
 // });
 
-Route::group(['middleware' => 'api'], function () {
-    Route::post('login', [AuthController::class, 'login']);
-    Route::post('logout', [AuthController::class, 'logout']);
-    Route::post('refresh', [AuthController::class, 'refresh']);
-    Route::post('me', [AuthController::class, 'me']);
-});
+Route::group(['middleware' => 'api'],function () {
+        Route::post('login', [AuthController::class, 'login']);
+        Route::post('logout', 'AuthController@logout');
+        Route::post('refresh', 'AuthController@refresh');
+        Route::post('me', 'AuthController@me');
 
-Route::post('/documents', [DocumentController::class, 'store']);
-Route::get('/list', [DocumentController::class, 'getDocuments']);
+        Route::get('/etudiants/user/{userId}', [EtudiantController::class, 'getEtudiantByUserId']);
 
-    
+        Route::post('/documents', [DocumentController::class, 'store']);
+        Route::get('/list', [DocumentController::class, 'getDocuments']);
 
-Route::get('/getDemandes', [ApiController::class, 'getDemandes']);
+            
 
-// Route::get('/get')
+        Route::get('/getDemandes', [ApiController::class, 'getDemandes']);
 
-Route::get('/getFiltredDemandes/{state}', [ApiController::class, 'getFiltresDemandes'])->where('state', '^(all|approved|pending)$');
+        // Route::get('/get')
+
+        Route::get('/getFiltredDemandes/{state}', [ApiController::class, 'getFiltresDemandes'])->where('state', '^(all|approved|pending)$');
+
+    });

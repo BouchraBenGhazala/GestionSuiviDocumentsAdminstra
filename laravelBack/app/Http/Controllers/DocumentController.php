@@ -43,14 +43,14 @@ class DocumentController extends Controller
     $userEmail = $request->input('hammad.mohamed2ensam-casa.com');
     Mail::to('abdoukefsi@gmail.com')->send(new ConfirmationEmail());
 
-    return response()->json(['message' => 'Form submitted successfully']);
+    // return response()->json(['message' => 'Form submitted successfully']);
     return response()->json(['message' => 'Demande enregistrée avec succès'], 201);
 }
 
 
     private function storeAttestationBourse(Request $request, $demandeId)
     {
-        $validator = \Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'annee' => 'required',
             'lieu_de_naissance' => 'required',
             'type_bourse' => 'required',
@@ -70,7 +70,7 @@ class DocumentController extends Controller
 
     private function storeCertificatScolarite(Request $request, $demandeId)
     {
-        $validator = \Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'date' => 'required',
             'lieu_de_naissance' => 'required',
         ]);
@@ -85,7 +85,7 @@ class DocumentController extends Controller
     }
     private function storeReleveNotes(Request $request, $demandeId)
     {
-        $validator = \Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'niveau' => 'required',
             'annee' => 'required',
             'session' => 'required',
@@ -102,7 +102,7 @@ class DocumentController extends Controller
     }
     private function storeConventionDeStage(Request $request, $demandeId)
     {
-        $validator = \Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'societe' => 'required',
             'date_debut' => 'required',
             'date_fin' => 'required',
@@ -119,7 +119,7 @@ class DocumentController extends Controller
     }
     private function storeTerrainDeSport(Request $request, $demandeId)
     {
-        $validator = \Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'date' => 'required',
             'heure_debut' => 'required',
             'heure_fin' => 'required',
