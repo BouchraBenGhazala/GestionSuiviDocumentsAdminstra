@@ -26,6 +26,8 @@ const appRoutes: Routes = [
   {
     path:'form',
     component: FormEtudiantComponent,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'etudiant' }, 
 
   },
   {
