@@ -27,6 +27,7 @@
                             <th class="border-top-0">filiere</th>
                             <th class="border-top-0">année</th>
                             <th class="border-top-0"> </th>
+                            <th class="border-top-0"> </th>
                         </tr>
                     </thead>
                     <ng-container *ngIf="demandes && demandes.length > 0; else elseBlock">
@@ -42,6 +43,8 @@
                                 <td>{{demande.annee}}</td>
                                 <td><i class="fa-solid fa-caret-down" style="font-size: 1.75em;"
                                         (click)="handleClickRow(demande)"></i></td>
+                                <td><button type="button" class="btn btn-primary">Primary</button></td>
+                                
                             </tr>
                             <tr *ngIf="selectedDemande === demande && displayDetails">
                                 <td colspan="8">
