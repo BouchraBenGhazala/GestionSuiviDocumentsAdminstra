@@ -31,5 +31,18 @@ export class DemandesData {
     const data = await fetch(url);
     return await data.json() ?? []; 
   }
+
+  //Dash etudiant
+  getAllDataEtudiant(etudiantId: number) {
+    return this.httpClient.get(`http://127.0.0.1:8000/api/getDemandesEtudiant/${etudiantId}`);
+  }
+
+  getFiltredDataEtudiant(etudiantId: number, state: string) {
+    return this.httpClient.get(`http://127.0.0.1:8000/api/getFiltredDemandesEtudiant/${etudiantId}/${state}`);
+  }
+
+  getEtudiantIdFromUserId(userId:number){
+    return this.httpClient.get(`http://127.0.0.1:8000/api/getEtudiantIdFromUserId/${userId}`);
+  }
   
 }

@@ -15,6 +15,7 @@ import { EtudiantComponent } from './components/etudiant/etudiant.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
 import { FormEtudiantComponent } from './form-etudiant/form-etudiant.component';
+import { Dashboard2Component } from './components/dashboard2/dashboard2.component';
 
 const appRoutes: Routes = [
   {
@@ -78,6 +79,12 @@ const appRoutes: Routes = [
     component: DashboardComponent,
     canActivate: [AfterLoginService,AuthGuardService],
     data: { expectedRole: 'admin' }, 
+  },
+  {
+    path: 'dashboard2',
+    component: Dashboard2Component,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'etudiant' }, 
   }
 ];
 
