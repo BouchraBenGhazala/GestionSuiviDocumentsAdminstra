@@ -75,7 +75,9 @@ const appRoutes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'admin' }, 
   }
 ];
 

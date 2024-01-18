@@ -6,7 +6,7 @@
                 <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
                     <form id="filterForm">
                         <select name="archive_filter" id="archive_filter" class="form-select shadow-none row border-top"
-                            [(ngModel)]="selectedState" (change)="onFilterChange()">
+                        [(ngModel)]="selectedState" (change)="onFilterChange()">
                             <option value="" disabled selected>Filtrer</option>
                             <option value="all">Tous</option>
                             <option value="approved">Traités</option>
@@ -35,18 +35,18 @@
                             <tr class="text-center">
                                 <td>{{demande.id}}</td>
                                 <td>{{demande.etat}}</td>
-                                <td>{{demande.type_demande}}</td>
+                                <td>{{demande.type_document}}</td>
                                 <td>{{demande.description}}</td>
                                 <td>{{demande.niveau}}</td>
                                 <td>{{demande.filiere}}</td>
                                 <td>{{demande.annee}}</td>
                                 <td><i class="fa-solid fa-caret-down" style="font-size: 1.75em;"
-                                        (click)="handleClickRow(demande.id)"></i></td>
+                                        (click)="handleClickRow(demande)"></i></td>
                             </tr>
-                            <tr *ngIf="selectedDemande === demande.id && displayDetails">
+                            <tr *ngIf="selectedDemande === demande && displayDetails">
                                 <td colspan="8">
-                                    <div class="d-flex">
-                                        <div>
+                                    <div class="row p-4">
+                                        <div class="col-sm-12 col-md-12 col-lg-6">
                                             <h5>Informations sur l'etudiant</h5>
                                             <img [src]="" alt="image etudiant" style="float: left;">
                                             <span>
@@ -59,14 +59,13 @@
                                             </span>
                                         </div>
 
-                                        <div>
-                                            <h5>Informations sur l'etudiant</h5>
-                                            <img [src]="" alt="image etudiant" style="float: left;">
-                                            <span>
-                                                <p>Code apogee: </p>
-                                            <p>CNE : </p>
-                                            <p>Nom</p>
-                                            <p>prenom</p>
+                                        <div class="col-sm-12 col-md-12 col-lg-6">
+                                            <h5>Plus d'information sur la demande</h5>
+                                            <h6>{{demande.type_document}}</h6>
+                                            <span *ngFor="let infos of infosType">
+                                                <ng-container *ngFor="let key in infos">
+                                                    <p> {{key}} : {{infos[key]}}</p>
+                                                </ng-container>
                                             </span>
                                         </div>
                                         
@@ -78,7 +77,7 @@
                         </tbody>
                     </ng-container>
                     <ng-template #elseBlock>
-                        <ng-container *ngIf="demandes===undefined">
+                        <ng-container *ngIf="demandes === undefined && demandes === null">
                             <h1>Aucune demande trouvé</h1>
                         </ng-container>
                     </ng-template>

@@ -10,61 +10,59 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
-  public form={
-    email:null,
-    password:null
+  public form = {
+    email: null,
+    password: null
   }
   constructor(
-    private bouchra:BouchraService,
-    private token:TokenService,
-    private router:Router,
-    private auth:AuthService
-    ) {
+    private bouchra: BouchraService,
+    private token: TokenService,
+    private router: Router,
+    private auth: AuthService
+  ) { }
+  public error = null;
 
-  }
-  public error=null;
 
-  
 
   onSubmit() {
     // console.log(this.form);
     this.bouchra.login(this.form).subscribe(
       // data=> console.log(data),
-      data=>this.handleResponse(data),
-      error=> this.handleError(error),
-      
-      
+      data => this.handleResponse(data),
+      error => this.handleError(error),
+
+
     );
   }
-  handleError(error:any){
-    this.error=error.error.error;
+  handleError(error: any) {
+    this.error = error.error.error;
   }
-// Dans LoginComponent
+  // Dans LoginComponent
 
-handleResponse(data: any) {
-  this.token.handle(data.access_token);
-  this.auth.changeAuthStatus(true);
+  handleResponse(data: any) {
+    this.token.handle(data.access_token);
+    this.auth.changeAuthStatus(true);
 
-  const userRole = this.token.getRole();
-  const username = data.user_nom;  // Add this line to get the username from the response
-  const user_prenom = data.user_prenom;  // Add this line to get the username from the response
-  const userId = data.userId;  
+    const userRole = this.token.getRole();
+    const username = data.user_nom;  // Add this line to get the username from the response
+    const user_prenom = data.user_prenom;  // Add this line to get the username from the response
+    const userId = data.userId;
 
-  console.log(userRole)
-  console.log(username)
-  localStorage.setItem('username', username);  
-  localStorage.setItem('userprenom', user_prenom);  
-  localStorage.setItem('userId', userId);  
-  if (userRole === 'etudiant') {
-    this.router.navigateByUrl('/etudiant');
-  } else if (userRole === 'admin') {
-    this.router.navigateByUrl('/administrateur');
-  } else {
-    this.router.navigateByUrl('/login');
+    console.log(userRole)
+    console.log(username)
+    localStorage.setItem('username', username);
+    localStorage.setItem('userprenom', user_prenom);
+    localStorage.setItem('userId', userId);
+    if (userRole === 'etudiant') {
+      this.router.navigateByUrl('/etudiant');
+    } else if (userRole === 'admin') {
+      this.router.navigateByUrl('/administrateur');
+    } else {
+      this.router.navigateByUrl('/login');
+    }
   }
-}
 
-  ngOnInit(){
+  ngOnInit() {
 
   }
 

@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,7 +21,7 @@ import { FormulaireConventionStageComponent } from './formulaire-convention-stag
 import { FormulaireReleveNotesComponent } from './formulaire-releve-notes/formulaire-releve-notes.component';
 import { FormulaireTerrainSportComponent } from './formulaire-terrain-sport/formulaire-terrain-sport.component';
 
-import { CommonModule } from '@angular/common';
+
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -37,6 +38,7 @@ import { MainComponent } from './components/dashboard/main/main.component';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,6 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     RequestResetComponent,
     ResponseResetComponent,
     SignupcomponentComponent,
-    SidebarComponent,
     Profile2Component,
     AdministrateurComponent,
     EtudiantComponent,
@@ -63,6 +64,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     MainComponent,
     DashboardComponent
   ],
+  
   imports: [
     CommonModule,
     BrowserModule,
@@ -72,6 +74,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+    // SidebarComponent,
   ],
   providers: [BouchraService],
   bootstrap: [AppComponent]

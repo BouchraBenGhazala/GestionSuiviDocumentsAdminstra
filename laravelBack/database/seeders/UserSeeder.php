@@ -22,6 +22,5 @@ class UserSeeder extends Seeder
         //     'password' => bcrypt('stage2023'),
         //     'role' =>'admin'
         // ]);
-
     }
 }

@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AttestationBourse;
+use App\Models\CertificatScolarite;
+use App\Models\ConventionStage;
 use Illuminate\Http\Request;
 use App\Models\Demande;
 use App\Models\Etudiant;
 use App\Models\User;
+use Faker\Core\Number;
 
 class ApiController extends Controller
 {
@@ -43,5 +47,13 @@ class ApiController extends Controller
         // $name = User::find($etudiant -> user_id);
         // $user = Etudiant::with('user')->find($id, ['nom', 'prenom']);
         return response() -> json($etudiantAvecUser, 200);
+    }
+
+    public function getInfosType(Request $request,string $type, int $id) {
+        // $classe = $type::find($id);
+        $class = resolve("App\\Models\\$type");
+        $data = $class::where('demande_id', $id);
+        return response() -> json($data, 200);
+        
     }
 }

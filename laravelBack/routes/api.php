@@ -42,3 +42,4 @@ Route::group(['middleware' => 'api'], function () {
 
 Route::get('/getFiltredDemandes/{state}', [ApiController::class, 'getFiltresDemandes'])->where('state', '^(approved|pending)$');
 Route::get('/getEtudiant', [ApiController::class, 'getEtudiant']);
+Route::get('/getInfosType/{type}_{id}', [ApiController::class, 'getInfosType'])->where('type', '^ConventionStage|CertificatScolarite|AttestationBourse|ReleveNotes$');
