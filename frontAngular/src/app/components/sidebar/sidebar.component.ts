@@ -79,7 +79,7 @@ export class SidebarComponent implements OnInit {
         if (item !== modelItem && modelItem.expanded) {
           modelItem.expanded = false;
         }
-      }
-    }
-  }
+   }
+}
+}
 }
