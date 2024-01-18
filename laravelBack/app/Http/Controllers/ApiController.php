@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Demande;
+use App\Models\Etudiant;
+use App\Models\User;
 
 class ApiController extends Controller
 {
@@ -28,4 +30,18 @@ class ApiController extends Controller
         $demandes = Demande::where('etat', $state)->get();
         return response() -> json($demandes, 200);
     } 
+
+    public function getEtudiant(Request $request){
+        $id = $request -> input('id');
+        $etudiant = Etudiant::where('id', $id)->get();
+        $withUser = Etudiant::with('user')->find($id)->user;
+        $etudiantAvecUser = $etudiant->map(function ($item, $key) use ($withUser) {
+            $item['nom'] =  $withUser->nom;
+            $item['prenom'] =  $withUser->prenom;
+            return $item;
+        });
+        // $name = User::find($etudiant -> user_id);
+        // $user = Etudiant::with('user')->find($id, ['nom', 'prenom']);
+        return response() -> json($etudiantAvecUser, 200);
+    }
 }

@@ -3,8 +3,6 @@ import { Component, Output, EventEmitter, OnInit, HostListener } from '@angular/
 import { Router } from '@angular/router';
 import { fadeInOut, INavbarData } from './helper';
 import { navbarData } from './nav-data';
-import { CommonModule } from '@angular/common';
-
 
 interface SideNavToggle {
   screenWidth: number;
@@ -29,10 +27,13 @@ interface SideNavToggle {
     ])
   ]
 })
+
+
+
 export class SidebarComponent implements OnInit {
 
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
-  collapsed = true;
+  collapsed = false;
   screenWidth = 0;
   navData = navbarData;
   multiple: boolean = false;
@@ -57,6 +58,7 @@ export class SidebarComponent implements OnInit {
     this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
   }
 
+
   closeSidenav(): void {
     this.collapsed = false;
     this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
@@ -77,7 +79,7 @@ export class SidebarComponent implements OnInit {
         if (item !== modelItem && modelItem.expanded) {
           modelItem.expanded = false;
         }
-      }
-    }
-  }
+      }
+    }
+  }
 }
