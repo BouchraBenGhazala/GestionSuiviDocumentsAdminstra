@@ -75,12 +75,14 @@ const appRoutes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'admin' }, 
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes),CommonModule],
+  imports: [RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

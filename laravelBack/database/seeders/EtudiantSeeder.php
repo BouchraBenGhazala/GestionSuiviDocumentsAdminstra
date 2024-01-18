@@ -14,12 +14,12 @@ class EtudiantSeeder extends Seeder
     public function run(): void
     {
         Etudiant::create([
-            'cne' => 'B1234E',
-            'code_apogee' => '190254',
-            'image' => 'https://thumbs.dreamstime.com/b/portrait-femelle-de-femme-d-avatar-d-ic-ne-de-profil-47075231.jpg',
-            'tel' => '0612345678',
-            'datenais' => '2002-01-14',
-            'user_id' => 2,
-     ]);
+            'cne' => '123456789',
+            'code_apogee' => 'AP123',
+            'image' => 'path/to/image.jpg',
+            'tel' => '0123456789',
+            'datenais' => '2000-01-01',
+        ]);
+
     }
 }

@@ -1,8 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
@@ -20,10 +20,16 @@ import { FormulaireCertificatScolariteComponent } from './formulaire-certificat-
 import { FormulaireConventionStageComponent } from './formulaire-convention-stage/formulaire-convention-stage.component';
 import { FormulaireReleveNotesComponent } from './formulaire-releve-notes/formulaire-releve-notes.component';
 import { FormulaireTerrainSportComponent } from './formulaire-terrain-sport/formulaire-terrain-sport.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { TotalComponent } from './components/dashboard/total/total.component';
+import { ApprouvedComponent } from './components/dashboard/approuved/approuved.component';
+import { PendingComponent } from './components/dashboard/pending/pending.component';
+import { MainComponent } from './components/dashboard/main/main.component';
 import { Profile2Component } from './components/profile2/profile2.component';
 import { AdministrateurComponent } from './components/administrateur/administrateur.component';
 import { EtudiantComponent } from './components/etudiant/etudiant.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +40,6 @@ import { EtudiantComponent } from './components/etudiant/etudiant.component';
     RequestResetComponent,
     ResponseResetComponent,
     SignupcomponentComponent,
-    SidebarComponent,
     Profile2Component,
     AdministrateurComponent,
     EtudiantComponent,
@@ -43,15 +48,26 @@ import { EtudiantComponent } from './components/etudiant/etudiant.component';
     FormulaireCertificatScolariteComponent,
     FormulaireConventionStageComponent,
     FormulaireReleveNotesComponent,
-    FormulaireTerrainSportComponent
+    FormulaireTerrainSportComponent,
+    SidebarComponent,
+    MainComponent,
+    TotalComponent,
+    ApprouvedComponent,
+    PendingComponent,
+    DashboardComponent,
+    NavbarComponent
   ],
+  
   imports: [
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterModule,
+    // SidebarComponent,
   ],
   providers: [BouchraService],
   bootstrap: [AppComponent]

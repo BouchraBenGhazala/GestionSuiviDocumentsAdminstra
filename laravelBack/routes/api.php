@@ -27,23 +27,19 @@ Route::get('/data', [ApiController::class, 'getData']);
 //     return $request->user();
 // });
 
-Route::group(['middleware' => 'api'],function () {
-        Route::post('login', [AuthController::class, 'login']);
-        Route::post('logout', 'AuthController@logout');
-        Route::post('refresh', 'AuthController@refresh');
-        Route::post('me', 'AuthController@me');
+Route::group(['middleware' => 'api'], function () {
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
 
-        Route::get('/etudiants/user/{userId}', [EtudiantController::class, 'getEtudiantByUserId']);
+    Route::get('/etudiants/user/{userId}', [EtudiantController::class, 'getEtudiantByUserId']);
 
-        Route::post('/documents', [DocumentController::class, 'store']);
-        Route::get('/list', [DocumentController::class, 'getDocuments']);
+    Route::post('/documents', [DocumentController::class, 'store']);
+    Route::get('/list', [DocumentController::class, 'getDocuments']);
+    Route::get('/getDemandes', [ApiController::class, 'getDemandes']);
+});
 
-            
-
-        Route::get('/getDemandes', [ApiController::class, 'getDemandes']);
-
-        // Route::get('/get')
-
-        Route::get('/getFiltredDemandes/{state}', [ApiController::class, 'getFiltresDemandes'])->where('state', '^(all|approved|pending)$');
-
-    });
+Route::get('/getFiltredDemandes/{state}', [ApiController::class, 'getFiltresDemandes'])->where('state', '^(approved|pending)$');
+Route::get('/getEtudiant', [ApiController::class, 'getEtudiant']);
+Route::get('/getInfosType/{type}_{id}', [ApiController::class, 'getInfosType'])->where('type', '^ConventionStage|CertificatScolarite|AttestationBourse|ReleveNotes$');
