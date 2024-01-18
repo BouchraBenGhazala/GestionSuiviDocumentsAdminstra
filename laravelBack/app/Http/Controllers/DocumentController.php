@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Demande;
+use App\Models\Etudiant;
 use App\Models\AttestationBourse; 
 use App\Models\CertificatScolarite;
 use App\Models\ConventionStage;
@@ -23,6 +24,7 @@ class DocumentController extends Controller
         'filiere' => 'required',
         'type_document' => 'required',
         'description' => 'required',
+        'etudiant_id'=>'required'
     ]);
 
     $demande = new Demande($validatedData);
@@ -40,8 +42,13 @@ class DocumentController extends Controller
     if (array_key_exists($typeDocument, $documentTypes)) {
         $this->{$documentTypes[$typeDocument]}($request, $demande->id);
     }
-    $userEmail = $request->input('hammad.mohamed2ensam-casa.com');
-    Mail::to('abdoukefsi@gmail.com')->send(new ConfirmationEmail());
+
+        $id = $demande->etudiant_id;
+        $etudiant = Etudiant::where('id', $id)->get();
+        $withUser = Etudiant::with('user')->find($id)->user;
+ 
+    $userEmail = $request->input('hammad.mohamed@ensam-casa.com');
+    Mail::to($withUser->email)->send(new ConfirmationEmail($withUser->nom,$withUser->prenom));
 
     // return response()->json(['message' => 'Form submitted successfully']);
     return response()->json(['message' => 'Demande enregistrée avec succès'], 201);

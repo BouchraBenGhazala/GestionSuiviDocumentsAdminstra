@@ -13,12 +13,19 @@ class ConfirmationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $nom;
+    public $prenom;
+
     /**
      * Create a new message instance.
+     *
+     * @param string $nom
+     * @param string $prenom
      */
-    public function __construct()
+    public function __construct($nom, $prenom)
     {
-        //
+        $this->nom = $nom;
+        $this->prenom = $prenom;
     }
 
     /**

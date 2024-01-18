@@ -18,14 +18,16 @@ import { FormEtudiantComponent } from './form-etudiant/form-etudiant.component';
 
 const appRoutes: Routes = [
   {
-    path:'login',
-    component: LoginComponent,
-    canActivate: [BeforeLoginService],
+    path:'form',
+    component: FormEtudiantComponent,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'etudiant' }, 
 
   },
   {
-    path:'form',
-    component: FormEtudiantComponent,
+    path:'login',
+    component: LoginComponent,
+    canActivate: [BeforeLoginService],
 
   },
   {

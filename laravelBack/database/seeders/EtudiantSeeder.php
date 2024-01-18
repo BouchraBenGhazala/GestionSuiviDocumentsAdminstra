@@ -19,7 +19,7 @@ class EtudiantSeeder extends Seeder
             'image' => 'https://thumbs.dreamstime.com/b/portrait-femelle-de-femme-d-avatar-d-ic-ne-de-profil-47075231.jpg',
             'tel' => '0612345678',
             'datenais' => '2002-01-14',
-            'user_id' => 3,
+            'user_id' => 2,
      ]);
     }
 }
