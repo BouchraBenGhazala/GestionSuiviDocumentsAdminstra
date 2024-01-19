@@ -15,9 +15,9 @@ export class ProfileComponent {
   constructor(private bouchraService: BouchraService) {}
 
   ngOnInit() {
-    this.username=localStorage.getItem('username');
-    this.userprenom=localStorage.getItem('userprenom');
-    const userId = localStorage.getItem('userId');
+    this.username=sessionStorage.getItem('username');
+    this.userprenom=sessionStorage.getItem('userprenom');
+    const userId = sessionStorage.getItem('userId');
     console.log("user name in etudiants: "+this.username)
     console.log("userId in etudiants: "+userId)
     if (userId) {

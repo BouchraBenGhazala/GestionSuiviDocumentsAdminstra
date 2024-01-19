@@ -12,24 +12,35 @@ export class TokenService {
     console.log(this.loggedIn());
   }
   set(token:any){
-    localStorage.setItem('token',token);
+    sessionStorage.setItem('token',token);
   }
   get(){
-    return localStorage.getItem('token');
+    return sessionStorage.getItem('token');
   }
   remove(){
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
   }
-  isValid(){
-    const token=this.get();
-    if(token){
-      const payload=this.payload(token);
-      if(payload){
-        return (payload.iss==='http://localhost:8000/api/login')?true:false;
+  isValid() {
+    const token = this.get();
+    if (token) {
+      const payload = this.payload(token);
+      if (payload) {
+        const expiration = payload.exp * 1000; // Convert seconds to milliseconds
+        return expiration > Date.now();
       }
     }
     return false;
   }
+  // isValid(){
+  //   const token=this.get();
+  //   if(token){
+  //     const payload=this.payload(token);
+  //     if(payload){
+  //       return (payload.iss==='http://localhost:8000/api/login')?true:false;
+  //     }
+  //   }
+  //   return false;
+  // }
   payload(token: any) {
     const payload = token.split('.')[1];
     console.log(payload);

@@ -50,9 +50,9 @@ export class LoginComponent implements OnInit {
 
     console.log(userRole)
     console.log(username)
-    localStorage.setItem('username', username);
-    localStorage.setItem('userprenom', user_prenom);
-    localStorage.setItem('userId', userId);
+    sessionStorage.setItem('username', username);
+    sessionStorage.setItem('userprenom', user_prenom);
+    sessionStorage.setItem('userId', userId);
     if (userRole === 'etudiant') {
       this.router.navigateByUrl('/etudiant');
     } else if (userRole === 'admin') {

@@ -16,7 +16,7 @@ export class Pending2Component implements OnInit{
   }
 
   getApprouvedDemandesEtudiant(){
-    const userId = localStorage.getItem('userId');
+    const userId = sessionStorage.getItem('userId');
     console.log("current user Id:"+userId); 
     if (userId !== null) {
 
