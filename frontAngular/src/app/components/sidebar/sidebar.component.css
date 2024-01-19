@@ -57,7 +57,7 @@
 }
 
 .sidenav-collapsed{
-    width: 16.5625rem;
+    width: 18.5625rem;
 }
 
 .sidenav-nav {
@@ -68,6 +68,7 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    margin-top: 65px;
 }
 
 .sidenav-nav .sidenav-nav-item {
@@ -106,7 +107,7 @@
     color: #000;
 }
 .last-item{
-    margin-top: 80px;
+    margin-top: 70px;
 }
 
 .active .menu-collapse-icon,

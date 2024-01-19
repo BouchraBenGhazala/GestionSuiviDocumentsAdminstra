@@ -23,7 +23,7 @@ export class MainComponent implements OnInit {
   selectedDemande: Demande | null;
   displayDetails: boolean = false;
   currentEtudiant: any = [];
-  infosType : any = [];
+  infosType: any = [];
 
   constructor(private demandesData: DemandesData,private http: HttpClient) { }
 
@@ -73,16 +73,14 @@ export class MainComponent implements OnInit {
     } else {
 
       //get concern student
-      let idEtudiant = this.demandes.find((d: Demande) => d.id === demande.id).etudiant_id;
-      console.log(idEtudiant);
-      let result: any = await this.demandesData.getEtudiant(idEtudiant);
-      this.currentEtudiant = result[0];
+
+      this.currentEtudiant = await this.getConcernEtudiant(demande.id);
+
+
 
       //get infos type of demandes
 
-      let typeDemandes = demande.type_document.replace("De", "").replace(/\s/g, "");
-      console.log(typeDemandes);
-      this.infosType =  this.demandesData.getInfosTypeDemande(typeDemandes, demande.id);
+      this.infosType = await this.getInfosType(demande.type_document, demande.id) ;
 
       // state of dispaly
       this.selectedDemande = demande;
@@ -91,8 +89,39 @@ export class MainComponent implements OnInit {
 
   }
 
-  // private capitalizeWords(input: string): string {
-  //   return input.replace(/\b\w/g, (char) => char.toUpperCase());
-  // }
+  private async getInfosType(type: string, id: number) {
+    let typeDemandes = type.replace("De", "").replace(/\s/g, "");
+
+    console.log(typeDemandes);
+
+    const infosTypeNoformated = await this.demandesData.getInfosTypeDemande(typeDemandes, id);
+
+    const formattedInfos = infosTypeNoformated.map((item: any) => {
+
+      const formattedItem: any = {};
+      // Iterate over the keys of the current object
+      Object.keys(item).forEach(key => {
+        // Replace underscores with spaces and capitalize words
+        const formattedKey = key.replace("_", " de ");
+        formattedItem[this.capitalizeWords(formattedKey)] = item[key];
+      });
+
+      return formattedItem;
+    });
+
+    return formattedInfos;
+  }
+
+  private async getConcernEtudiant(id: number) {
+    const idEtudiant = this.demandes.find((d: Demande) => d.id === id).etudiant_id;
+    console.log(idEtudiant);
+    const result: any = await this.demandesData.getEtudiant(idEtudiant);
+    console.log(result);
+    return result[0];
+  }
+
+  private capitalizeWords(input: string): string {
+    return input.replace(/\b\w/g, (char) => char.toUpperCase());
+  }
 
 }

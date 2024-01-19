@@ -13,6 +13,15 @@ class EtudiantSeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
+        // Etudiant::create([
+        //     'cne' => '123456789',
+        //     'code_apogee' => 'AP123',
+        //     'image' => 'path/to/image.jpg',
+        //     'tel' => '0123456789',
+        //     'datenais' => '2000-01-01',
+        // ]);
+=======
         Etudiant::create([
             'cne' => 'Y1234',
             'code_apogee' => '45729462',
@@ -22,5 +31,6 @@ class EtudiantSeeder extends Seeder
             'user_id' => 4
         ]);
 
+>>>>>>> 3e67a7493123a2aee996ae5ed0c121ea3a95623a
     }
 }

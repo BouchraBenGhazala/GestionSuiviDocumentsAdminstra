@@ -1,8 +1,10 @@
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
-import { Component, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, HostListener, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { fadeInOut, INavbarData } from './helper';
 import { navbarData } from './nav-data';
+import { AuthService } from '../../services/auth.service';
+import { TokenService } from '../../services/token.service';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -30,13 +32,14 @@ interface SideNavToggle {
 
 
 
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, OnChanges {
 
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
   collapsed = true;
   screenWidth = 0;
   navData = navbarData;
   multiple: boolean = false;
+  @Input() loggedIn : boolean;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -47,11 +50,12 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private auth : AuthService, private token : TokenService) { }
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
   }
+  
 
   toggleCollapse(): void {
     this.collapsed = !this.collapsed;
@@ -64,22 +68,31 @@ export class SidebarComponent implements OnInit {
     this.onToggleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth });
   }
 
-  handleClick(item: INavbarData): void {
-    this.shrinkItems(item);
-    item.expanded = !item.expanded
-  }
+  // handleClick(item: INavbarData): void {
+  //   this.shrinkItems(item);
+  //   item.expanded = !item.expanded
+  // }
 
   getActiveClass(data: INavbarData): string {
     return this.router.url.includes(data.routeLink) ? 'active' : '';
   }
 
-  shrinkItems(item: INavbarData): void {
+  shrinkItems(item: INavbarData, last: boolean): void {
     if (!this.multiple) {
       for (let modelItem of this.navData) {
         if (item !== modelItem && modelItem.expanded) {
           modelItem.expanded = false;
         }
-   }
-}
-}
+      }
+    }
+    if (last) {
+      this.auth.logout();
+      
+    }
+  }
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+  }
+
 }

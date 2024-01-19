@@ -15,7 +15,8 @@ import { EtudiantComponent } from './components/etudiant/etudiant.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
 import { FormEtudiantComponent } from './form-etudiant/form-etudiant.component';
-import { Dashboard2Component } from './components/dashboard2/dashboard2.component';
+import { ApprovedComponent } from './components/approved/approved.component';
+import { PendingComponent } from './components/pending/pending.component';
 
 const appRoutes: Routes = [
   {
@@ -29,7 +30,6 @@ const appRoutes: Routes = [
     path:'login',
     component: LoginComponent,
     canActivate: [BeforeLoginService],
-
   },
   {
     path:'administrateur',
@@ -81,10 +81,12 @@ const appRoutes: Routes = [
     data: { expectedRole: 'admin' }, 
   },
   {
-    path: 'dashboard2',
-    component: Dashboard2Component,
-    canActivate: [AfterLoginService,AuthGuardService],
-    data: { expectedRole: 'etudiant' }, 
+    path: 'approved',
+    component : ApprovedComponent
+  },
+  {
+    path: 'pending',
+    component : PendingComponent
   }
 ];
 

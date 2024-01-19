@@ -39,12 +39,7 @@ import { MainComponent } from './components/dashboard/main/main.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { Dashboard2Component } from './components/dashboard2/dashboard2.component';
-import { Approuved2Component } from './components/dashboard2/approuved2/approuved2.component';
-import { Pending2Component } from './components/dashboard2/pending2/pending2.component';
-import { Total2Component } from './components/dashboard2/total2/total2.component';
-import { Main2Component } from './components/dashboard2/main2/main2.component';
-
+import { ApprovedComponent } from './components/approved/approved.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,14 +63,9 @@ import { Main2Component } from './components/dashboard2/main2/main2.component';
     PendingComponent,
     MainComponent,
     DashboardComponent,
-    SidebarComponent,
-    Dashboard2Component,
-    ApprouvedComponent,
-    Approuved2Component,
-    Pending2Component,
-    Total2Component,
-    Main2Component
-
+    NavbarComponent,
+    ApprovedComponent,
+    SidebarComponent
   ],
   
   imports: [
