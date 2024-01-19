@@ -16,6 +16,7 @@ class EtudiantController extends Controller
                 'message' => $etudiant
             ], 200);
         } else {
+            
             return response()->json([
                 'status' => 404,
                 'message' => 'Aucun étudiant trouvé pour cet utilisateur.'

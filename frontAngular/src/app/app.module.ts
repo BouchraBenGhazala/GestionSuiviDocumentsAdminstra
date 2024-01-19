@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
@@ -12,7 +12,7 @@ import { ResponseResetComponent } from './components/password/response-reset/res
 import { SignupcomponentComponent } from './components/signup/signupcomponent/signupcomponent.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BouchraService } from './services/bouchra.service';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import {FormEtudiantComponent} from './form-etudiant/form-etudiant.component';
 import { FormulaireAttestationBourseComponent } from './formulaire-attestation-bourse/formulaire-attestation-bourse.component';
@@ -20,16 +20,30 @@ import { FormulaireCertificatScolariteComponent } from './formulaire-certificat-
 import { FormulaireConventionStageComponent } from './formulaire-convention-stage/formulaire-convention-stage.component';
 import { FormulaireReleveNotesComponent } from './formulaire-releve-notes/formulaire-releve-notes.component';
 import { FormulaireTerrainSportComponent } from './formulaire-terrain-sport/formulaire-terrain-sport.component';
+
+
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
+
+
+import { Profile2Component } from './components/profile2/profile2.component';
+import { AdministrateurComponent } from './components/administrateur/administrateur.component';
+import { EtudiantComponent } from './components/etudiant/etudiant.component';
+
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { TotalComponent } from './components/dashboard/total/total.component';
 import { ApprouvedComponent } from './components/dashboard/approuved/approuved.component';
 import { PendingComponent } from './components/dashboard/pending/pending.component';
 import { MainComponent } from './components/dashboard/main/main.component';
-import { Profile2Component } from './components/profile2/profile2.component';
-import { AdministrateurComponent } from './components/administrateur/administrateur.component';
-import { EtudiantComponent } from './components/etudiant/etudiant.component';
+
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { Dashboard2Component } from './components/dashboard2/dashboard2.component';
+import { Approuved2Component } from './components/dashboard2/approuved2/approuved2.component';
+import { Pending2Component } from './components/dashboard2/pending2/pending2.component';
+import { Total2Component } from './components/dashboard2/total2/total2.component';
+import { Main2Component } from './components/dashboard2/main2/main2.component';
 
 @NgModule({
   declarations: [
@@ -49,13 +63,19 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     FormulaireConventionStageComponent,
     FormulaireReleveNotesComponent,
     FormulaireTerrainSportComponent,
-    SidebarComponent,
-    MainComponent,
     TotalComponent,
     ApprouvedComponent,
     PendingComponent,
+    MainComponent,
     DashboardComponent,
-    NavbarComponent
+    SidebarComponent,
+    Dashboard2Component,
+    ApprouvedComponent,
+    Approuved2Component,
+    Pending2Component,
+    Total2Component,
+    Main2Component
+
   ],
   
   imports: [

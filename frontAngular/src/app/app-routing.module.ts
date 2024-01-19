@@ -15,6 +15,7 @@ import { EtudiantComponent } from './components/etudiant/etudiant.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
 import { FormEtudiantComponent } from './form-etudiant/form-etudiant.component';
+import { Dashboard2Component } from './components/dashboard2/dashboard2.component';
 
 const appRoutes: Routes = [
   {
@@ -25,9 +26,16 @@ const appRoutes: Routes = [
 
   },
   {
+<<<<<<< HEAD
     path:'login',
     component: LoginComponent,
     canActivate: [BeforeLoginService],
+=======
+    path:'form',
+    component: FormEtudiantComponent,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'etudiant' }, 
+>>>>>>> 7eb6c312621eea66c8ee729d6d75320385b405ae
 
   },
   {
@@ -78,6 +86,12 @@ const appRoutes: Routes = [
     component: DashboardComponent,
     canActivate: [AfterLoginService,AuthGuardService],
     data: { expectedRole: 'admin' }, 
+  },
+  {
+    path: 'dashboard2',
+    component: Dashboard2Component,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'etudiant' }, 
   }
 ];
 
