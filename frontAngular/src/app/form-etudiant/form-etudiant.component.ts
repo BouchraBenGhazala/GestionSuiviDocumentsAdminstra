@@ -20,7 +20,7 @@ export class FormEtudiantComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.etudiantId = localStorage.getItem('userId');
+    this.etudiantId = sessionStorage.getItem('userId');
     console.log('etudisantt ID:', this.etudiantId);
 
   }
@@ -48,7 +48,7 @@ export class FormEtudiantComponent implements OnInit {
       const formData = this.documentForm.value;
 
       // Retrieve etudiant_id from localStorage
-    const etudiantId = localStorage.getItem('userId');
+    const etudiantId = sessionStorage.getItem('userId');
 
     // Include etudiant_id in the form data
     formData.etudiant_id = etudiantId;
