@@ -81,7 +81,7 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => JWTFactory::getTTL() * 60,
+            'expires_in' => JWTFactory::getTTL(),
             'user_nom' => auth()->user()->nom,
             'user_prenom' => auth()->user()->prenom,
             'userId' => auth()->user()->id,

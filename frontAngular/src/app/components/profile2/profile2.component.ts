@@ -13,6 +13,6 @@ export class Profile2Component implements OnInit {
 
   ngOnInit() {
     // this.username = this.tokenService.getUsername();
-    this.username=localStorage.getItem('username');
+    this.username=sessionStorage.getItem('username');
   }
 }

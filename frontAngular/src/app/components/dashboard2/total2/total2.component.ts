@@ -17,7 +17,7 @@ export class Total2Component implements OnInit {
   }
 
   getAllDataEtudiant() {
-    const userId = localStorage.getItem('userId');  // Utiliser localStorage pour obtenir userId
+    const userId = sessionStorage.getItem('userId');  // Utiliser localStorage pour obtenir userId
     // console.log("current user Id:"+userId); //4
 
     if (userId !== null) {

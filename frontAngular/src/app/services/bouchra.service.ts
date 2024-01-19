@@ -9,7 +9,7 @@ export class BouchraService {
 
   constructor(private http:HttpClient) { }
   login(data: any){
-    localStorage.setItem('username',data.nom);
+    sessionStorage.setItem('username',data.nom);
     return this.http.post(`${this.baseUrl}/login`,data);
   }
   etudiantByUserId(userId: string) {

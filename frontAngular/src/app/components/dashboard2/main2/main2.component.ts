@@ -32,7 +32,7 @@ export class Main2Component implements OnInit{
   }
 
   getAllDemandesEtudiant(){
-    const userId = localStorage.getItem('userId');
+    const userId = sessionStorage.getItem('userId');
     console.log("current user Id:"+userId); 
     if (userId !== null) {
 
