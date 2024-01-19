@@ -12,13 +12,13 @@ export class TokenService {
     console.log(this.loggedIn());
   }
   set(token:any){
-    localStorage.setItem('token',token);
+    sessionStorage.setItem('token',token);
   }
   get(){
-    return localStorage.getItem('token');
+    return sessionStorage.getItem('token');
   }
   remove(){
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
   }
   isValid(){
     const token=this.get();

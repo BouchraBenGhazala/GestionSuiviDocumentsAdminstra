@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ConventionStage;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,19 @@ class ConventionSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        ConventionStage::create([
+            'societe' => 'ONEE',
+            'date_debut' => now(),
+            'date_fin' => now(),
+            'demande_id'=> 1,
+
+        ]);
+        ConventionStage::create([
+            'societe' => 'sckbvjsb',
+            'date_debut' => now(),
+            'date_fin' => now(),
+            'demande_id'=> 2,
+
+        ]);
     }
 }

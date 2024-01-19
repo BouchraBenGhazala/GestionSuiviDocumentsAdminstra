@@ -66,9 +66,9 @@
                                             <h5>Plus d'information sur la demande</h5>
                                             <h6>{{demande.type_document}}</h6>
                                             <span *ngFor="let infos of infosType">
-                                                <ng-container *ngFor="let key in infos">
-                                                    <p> {{key}} : {{infos[key]}}</p>
-                                                </ng-container>
+                                                <ng-container *ngFor="let item of infos | keyvalue">
+                                                    <p>{{ item.key }}: {{ item.value }}</p>
+                                                  </ng-container>
                                             </span>
                                         </div>
                                         

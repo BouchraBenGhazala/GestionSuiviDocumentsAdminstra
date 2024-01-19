@@ -30,6 +30,7 @@ import { Profile2Component } from './components/profile2/profile2.component';
 import { AdministrateurComponent } from './components/administrateur/administrateur.component';
 import { EtudiantComponent } from './components/etudiant/etudiant.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ApprovedComponent } from './components/approved/approved.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     ApprouvedComponent,
     PendingComponent,
     DashboardComponent,
-    NavbarComponent
+    NavbarComponent,
+    ApprovedComponent
   ],
   
   imports: [

@@ -52,8 +52,12 @@ class ApiController extends Controller
     public function getInfosType(Request $request,string $type, int $id) {
         // $classe = $type::find($id);
         $class = resolve("App\\Models\\$type");
-        $data = $class::where('demande_id', $id);
+        $data = $class->where('demande_id', $id)->get();
+        $data->transform(function($item) {
+            return collect($item)->except(['created_at', 'deleted_at', 'updated_at', 'demande_id', 'id'])->all();
+        });
         return response() -> json($data, 200);
+        
         
     }
 }

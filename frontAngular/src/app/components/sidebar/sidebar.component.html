@@ -4,22 +4,23 @@
           <img src="../../assets/ensam-mini.png" alt="">
         </button>
         <div class="logo-text" @fadeInOut *ngIf="collapsed">
-          <!-- ENSAM Casablanca -->
+          ENSAM Casablanca
         </div>
         <button class="btn-close" @rotate *ngIf="collapsed" (click)="closeSidenav()">
             <i class="fa fa-times close-icon"></i>
         </button>
     </div>
-    <div class="scrollwrap scrollwrap_delayed mt-4">
-        <ul class="sidenav-nav">
+    <div class="scrollwrap scrollwrap_delayed">
+        <ul class="sidenav-nav ">
             <li class="sidenav-nav-item my-3" *ngFor="let data of navData; last as l">
                 <a class="sidenav-nav-link" 
-                    *ngIf="!data.items || (data.items && data.items.length === 0)"
+                    *ngIf="(loggedIn) || (!loggedIn && !l)"
                     [routerLink]="[data.routeLink]" 
                     routerLinkActive="active"
                     [routerLinkActiveOptions]="{exact: true}"
-                    (click)="shrinkItems(data)"
+                    (click)="shrinkItems(data, l)"
                     [ngClass]="{'last-item':l}"
+
                     >
                     <i class="sidenav-link-icon" [class]="data.icon"></i>
                     <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
@@ -27,6 +28,20 @@
                     </span>
                 </a>
             </li>
+            <!-- <li class="sidenav-nav-item my-3" *ngIf="!loggedIn">
+                <a class="sidenav-nav-link" 
+                    routerLink="/login" 
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}"
+                    
+                    >
+                    <i class="sidenav-link-icon" class="fas fa-sign-in"></i>
+                    <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
+                        Log In
+                    </span>
+                </a>
+            </li> -->
+            
         </ul>
        
  </div>
