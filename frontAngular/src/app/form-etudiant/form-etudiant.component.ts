@@ -14,7 +14,7 @@ export class FormEtudiantComponent implements OnInit {
 
   niveaux = ['API1', 'API2', 'CI1', 'CI2', 'CI3'];
   filieres = ['rien', 'IAGI', 'GE', 'GM', 'GI'];
-  typesDocuments = ['Relevé De Notes', 'Attestation De Bourse', 'Certificat De Scolarite', 'Convention De Stage','Terrain De Sport'];
+  typesDocuments = ['Releve De Notes', 'Attestation De Bourse', 'Certificat De Scolarite', 'Convention De Stage','Terrain De Sport'];
 
   constructor(private fb: FormBuilder, private documentService: DocumentService) { }
 

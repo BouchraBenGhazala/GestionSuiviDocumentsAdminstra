@@ -45,13 +45,13 @@ form {
   }
   
   .login-box {
-    width: 400px;
+    width: 600px;
     padding: 40px;
     margin:50px;
-    margin-left: 160px;
+    margin-left: 200px;
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
-    background-color: #174270;
+    background-color: #194370;
     border-radius: 10px;
       }
   

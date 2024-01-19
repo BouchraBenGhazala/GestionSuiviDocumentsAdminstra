@@ -11,12 +11,35 @@ use App\Models\ConventionStage;
 use App\Models\ReleveNotes;
 use App\Models\TerrainSport;
 use App\Mail\ConfirmationEmail;
+use App\Mail\NotificationDemandeTraitee;
 use Illuminate\Support\Facades\Mail;
 
 
 use Illuminate\Support\Facades\Validator;
 class DocumentController extends Controller
 {
+    public function updateEtat(Request $request, $id)
+    {
+        $demande = Demande::findOrFail($id);
+
+        if ($demande->etat === 'En Cours') {
+            $demande->etat = 'Traitee';
+            $demande->save();
+
+            $id = $demande->etudiant_id;
+        $etudiant = Etudiant::where('id', $id)->get();
+        $withUser = Etudiant::with('user')->find($id)->user;
+        Mail::to($withUser->email)->send(new NotificationDemandeTraitee($withUser->prenom, $withUser->nom,$demande->type_document));
+
+        return response()->json(['message' => 'État de la demande mis à jour avec succès et e-mail envoyé à l\'étudiant'], 200);
+        }
+
+        return response()->json(['message' => 'Impossible de mettre à jour l\'état de la demande'], 400);
+    }
+
+
+
+
     public function store(Request $request)
 {
     $validatedData = $request->validate([
@@ -33,7 +56,7 @@ class DocumentController extends Controller
     $documentTypes = [
         'Attestation De Bourse' => 'storeAttestationBourse',
         'Certificat De Scolarite' => 'storeCertificatScolarite',
-        'Relevé De Notes'=>'storeReleveNotes',
+        'Releve De Notes'=>'storeReleveNotes',
         'Convention De Stage'=>'storeConventionDeStage',
         'Terrain De Sport'=>'storeTerrainDeSport'
             ];

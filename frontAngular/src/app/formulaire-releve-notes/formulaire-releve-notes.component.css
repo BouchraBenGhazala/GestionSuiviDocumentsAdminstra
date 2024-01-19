@@ -10,7 +10,7 @@ label {
 }
 
   
-  select, textarea {
+  select, textarea ,input{
     margin-bottom: 10px;
     border-radius: 10px;
   }

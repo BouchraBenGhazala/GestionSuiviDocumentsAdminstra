@@ -39,7 +39,8 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('/list', [DocumentController::class, 'getDocuments']);
     Route::get('/getDemandes', [ApiController::class, 'getDemandes']);
 });
+Route::post('/demande/update-etat/{id}', [DocumentController::class, 'updateEtat']);
 
-Route::get('/getFiltredDemandes/{state}', [ApiController::class, 'getFiltresDemandes'])->where('state', '^(approved|pending)$');
+Route::get('/getFiltredDemandes/{state}', [ApiController::class, 'getFiltresDemandes'])->where('state', '^(Traitee|En Cours)$');
 Route::get('/getEtudiant', [ApiController::class, 'getEtudiant']);
 Route::get('/getInfosType/{type}_{id}', [ApiController::class, 'getInfosType'])->where('type', '^ConventionStage|CertificatScolarite|AttestationBourse|ReleveNotes$');

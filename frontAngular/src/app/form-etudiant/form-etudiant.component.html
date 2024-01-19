@@ -1,5 +1,6 @@
 <div class="login-box ">
 <form [formGroup]="documentForm" (ngSubmit)="onSubmit()">
+  <h1>Infos personnelles</h1>
 
     <label for="niveau"><b>Niveau</b></label>
     <select formControlName="niveau">
@@ -22,7 +23,7 @@
     <app-formulaire-certificat-scolarite *ngIf="getSelectedDocumentType() === 'Certificat De Scolarite'" [certificatScolariteForm]="documentForm"></app-formulaire-certificat-scolarite>
     <app-formulaire-convention-stage *ngIf="getSelectedDocumentType() === 'Convention De Stage'" [conventionStageForm]="documentForm"></app-formulaire-convention-stage>
     
-    <app-formulaire-releve-notes *ngIf="getSelectedDocumentType() === 'Relevé De Notes'" [releveNotesForm]="documentForm"></app-formulaire-releve-notes>
+    <app-formulaire-releve-notes *ngIf="getSelectedDocumentType() === 'Releve De Notes'" [releveNotesForm]="documentForm"></app-formulaire-releve-notes>
     <app-formulaire-terrain-sport *ngIf="getSelectedDocumentType() === 'Terrain De Sport'" [terrainSportForm]="documentForm"></app-formulaire-terrain-sport>
     
   

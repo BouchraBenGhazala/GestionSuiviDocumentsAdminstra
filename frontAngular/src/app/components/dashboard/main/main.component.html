@@ -9,8 +9,9 @@
                         [(ngModel)]="selectedState" (change)="onFilterChange()">
                             <option value="" disabled selected>Filtrer</option>
                             <option value="all">Tous</option>
-                            <option value="approved">Traités</option>
-                            <option value="pending">En Attente</option>
+                            
+                            <option value="Traitee">Traités</option>
+                            <option value="En Cours">En Cours</option>
                         </select>
                     </form>
                 </div>
@@ -43,8 +44,7 @@
                                 <td>{{demande.annee}}</td>
                                 <td><i class="fa-solid fa-caret-down" style="font-size: 1.75em;"
                                         (click)="handleClickRow(demande)"></i></td>
-                                <td><button type="button" class="btn btn-primary">Primary</button></td>
-                                
+                                <td><button type="button" class="btn btn-primary" (click)="validerDemande(demande)" [disabled]="demande.etat === 'Traitee'">Valider</button></td>                              
                             </tr>
                             <tr *ngIf="selectedDemande === demande && displayDetails">
                                 <td colspan="8">
@@ -81,7 +81,7 @@
                     </ng-container>
                     <ng-template #elseBlock>
                         <ng-container *ngIf="demandes === undefined && demandes === null">
-                            <h1>Aucune demande trouvé</h1>
+                            <h1>Aucune demande trouvée</h1>
                         </ng-container>
                     </ng-template>
 

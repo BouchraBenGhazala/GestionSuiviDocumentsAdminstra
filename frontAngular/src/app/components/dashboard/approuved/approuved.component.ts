@@ -16,7 +16,7 @@ export class ApprouvedComponent implements OnInit{
   }
 
   getApprouvedDemandes(){
-    this.approuvedDemandes.getFiltredData('approved').subscribe((res : any) => {
+    this.approuvedDemandes.getFiltredData('Traitee').subscribe((res : any) => {
       this.lengthApprouved = res.length;
     })
   }

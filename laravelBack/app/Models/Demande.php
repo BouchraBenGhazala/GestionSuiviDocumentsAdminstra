@@ -21,7 +21,7 @@ class Demande extends Model
     protected static function booted()
     {
         static::creating(function ($demande) {
-            $demande->etat = $demande->etat ?? 'en cours';
+            $demande->etat = $demande->etat ?? 'En Cours';
             $demande->annee = $demande->annee ?? '2024-01-16';
         });
     }
