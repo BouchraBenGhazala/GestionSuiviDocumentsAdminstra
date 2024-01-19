@@ -20,16 +20,27 @@ export class TokenService {
   remove(){
     sessionStorage.removeItem('token');
   }
-  isValid(){
-    const token=this.get();
-    if(token){
-      const payload=this.payload(token);
-      if(payload){
-        return (payload.iss==='http://localhost:8000/api/login')?true:false;
+  isValid() {
+    const token = this.get();
+    if (token) {
+      const payload = this.payload(token);
+      if (payload) {
+        const expiration = payload.exp * 1000; // Convert seconds to milliseconds
+        return expiration > Date.now();
       }
     }
     return false;
   }
+  // isValid(){
+  //   const token=this.get();
+  //   if(token){
+  //     const payload=this.payload(token);
+  //     if(payload){
+  //       return (payload.iss==='http://localhost:8000/api/login')?true:false;
+  //     }
+  //   }
+  //   return false;
+  // }
   payload(token: any) {
     const payload = token.split('.')[1];
     console.log(payload);

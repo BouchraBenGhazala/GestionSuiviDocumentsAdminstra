@@ -15,28 +15,34 @@ import { EtudiantComponent } from './components/etudiant/etudiant.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
 import { FormEtudiantComponent } from './form-etudiant/form-etudiant.component';
+<<<<<<< HEAD
 import { ApprovedComponent } from './components/approved/approved.component';
 import { PendingComponent } from './components/pending/pending.component';
+=======
+import { Dashboard2Component } from './components/dashboard2/dashboard2.component';
+>>>>>>> 3e67a7493123a2aee996ae5ed0c121ea3a95623a
 
 const appRoutes: Routes = [
+  {
+    path:'form',
+    component: FormEtudiantComponent,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'etudiant' }, 
+
+  },
   {
     path:'login',
     component: LoginComponent,
     canActivate: [BeforeLoginService],
   },
   {
-    path:'form',
-    component: FormEtudiantComponent,
-
-  },
-  {
-    path:'profile2',
+    path:'administrateur',
     component: Profile2Component,
     canActivate: [AfterLoginService,AuthGuardService],
     data: { expectedRole: 'admin' }, 
   },
   {
-    path:'profile',
+    path:'etudiant',
     component: ProfileComponent,
     canActivate: [AfterLoginService,AuthGuardService],
     data: { expectedRole: 'etudiant' },  
@@ -79,12 +85,19 @@ const appRoutes: Routes = [
     data: { expectedRole: 'admin' }, 
   },
   {
+<<<<<<< HEAD
     path: 'approved',
     component : ApprovedComponent
   },
   {
     path: 'pending',
     component : PendingComponent
+=======
+    path: 'dashboard2',
+    component: Dashboard2Component,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'etudiant' }, 
+>>>>>>> 3e67a7493123a2aee996ae5ed0c121ea3a95623a
   }
 ];
 

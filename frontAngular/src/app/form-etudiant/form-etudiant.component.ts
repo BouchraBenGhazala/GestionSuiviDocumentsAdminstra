@@ -10,16 +10,19 @@ import { DocumentService } from '../document.service'; // Assurez-vous d'ajuster
 export class FormEtudiantComponent implements OnInit {
 
   documentForm: FormGroup;
-  
+  etudiantId: string | null;
 
   niveaux = ['API1', 'API2', 'CI1', 'CI2', 'CI3'];
   filieres = ['rien', 'IAGI', 'GE', 'GM', 'GI'];
-  typesDocuments = ['Relevé De Notes', 'Attestation De Bourse', 'Certificat De Scolarite', 'Convention De Stage','Terrain De Sport'];
+  typesDocuments = ['Releve De Notes', 'Attestation De Bourse', 'Certificat De Scolarite', 'Convention De Stage','Terrain De Sport'];
 
   constructor(private fb: FormBuilder, private documentService: DocumentService) { }
 
   ngOnInit(): void {
     this.initForm();
+    this.etudiantId = sessionStorage.getItem('userId');
+    console.log('etudisantt ID:', this.etudiantId);
+
   }
 
   initForm(): void {
@@ -34,37 +37,32 @@ export class FormEtudiantComponent implements OnInit {
       date:['']
     });
   }
-  /*
-  isTypeDocumentSelected(): boolean {
-    const typeDocumentControl = this.documentForm.get('type_document');
-    if (typeDocumentControl && typeDocumentControl.valid) {
-      return typeDocumentControl.value !== null;
-    }
-    return false;
-  }*/
+
   getSelectedDocumentType(): string | null {
     const typeDocumentControl = this.documentForm.get('type_document');
     return typeDocumentControl?.value || null;
   }
-  
-  
 
   onSubmit(): void {
     if (this.documentForm.valid) {
       const formData = this.documentForm.value;
 
-      // Utilisez le service pour envoyer le formulaire au backend
+      // Retrieve etudiant_id from localStorage
+    const etudiantId = sessionStorage.getItem('userId');
+
+    // Include etudiant_id in the form data
+    formData.etudiant_id = etudiantId;
       this.documentService.saveDocument(formData).subscribe(
         (response) => {
-          // Gérer la réponse réussie
+          // Handle successful response
           console.log('Enregistrement réussi :', response);
           console.log(formData);
-          
-          // Réinitialiser le formulaire après soumission
+
+          // Reset the form after submission
           this.documentForm.reset();
         },
         (error) => {
-          // Gérer les erreurs
+          // Handle errors
           console.error('Erreur lors de l\'enregistrement :', error);
         }
       );

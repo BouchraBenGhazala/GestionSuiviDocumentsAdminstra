@@ -1,4 +1,5 @@
 <div [formGroup]="documentForm" class="formulaire">
+    <h1>Infos sur la demande</h1>
     <label for="annee">Année</label>
     <input type="date" id="annee" formControlName="annee" />
   
@@ -6,7 +7,10 @@
     <input type="text" id="lieu_de_naissance" formControlName="lieu_de_naissance" />
   
     <label for="type_bourse">Type de Bourse</label>
-    <input type="text" id="type_bourse" formControlName="type_bourse" /> 
-  
+<select id="type_bourse" formControlName="type_bourse">
+    <option value="demi_bourse">Demi Bourse</option>
+    <option value="bourse_complete">Bourse Complète</option>
+</select>
+
 </div>
   

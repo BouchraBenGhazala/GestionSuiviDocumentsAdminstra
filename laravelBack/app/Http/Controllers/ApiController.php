@@ -60,4 +60,30 @@ class ApiController extends Controller
         
         
     }
+    //Dash de l'etudiant
+    public function getDemandesEtudiant(int $etudiantId)
+    {
+        $demandes = Demande::where('etudiant_id', $etudiantId)->get();
+        return response()->json($demandes, 200);
+    }
+
+    public function getFiltresDemandesEtudiant(Request $request, int $etudiantId, string $state)
+    {
+        $demandes = Demande::where('etudiant_id', $etudiantId)
+                           ->where('etat', $state)
+                           ->get();
+
+        return response()->json($demandes, 200);
+    }
+    public function getEtudiantIdFromUserId(int $userId)
+{
+    $etudiantId = Etudiant::where('user_id', $userId)->value('id');
+    
+    if ($etudiantId) {
+        return response()->json(['etudiant_id' => $etudiantId], 200);
+    } else {
+        return response()->json(['message' => 'Étudiant non trouvé'], 404);
+    }
+}
+
 }

@@ -4,18 +4,42 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Demande;
+use App\Models\Etudiant;
 use App\Models\AttestationBourse; 
 use App\Models\CertificatScolarite;
 use App\Models\ConventionStage;
 use App\Models\ReleveNotes;
 use App\Models\TerrainSport;
 use App\Mail\ConfirmationEmail;
+use App\Mail\NotificationDemandeTraitee;
 use Illuminate\Support\Facades\Mail;
 
 
 use Illuminate\Support\Facades\Validator;
 class DocumentController extends Controller
 {
+    public function updateEtat(Request $request, $id)
+    {
+        $demande = Demande::findOrFail($id);
+
+        if ($demande->etat === 'En Cours') {
+            $demande->etat = 'Traitee';
+            $demande->save();
+
+            $id = $demande->etudiant_id;
+        $etudiant = Etudiant::where('id', $id)->get();
+        $withUser = Etudiant::with('user')->find($id)->user;
+        Mail::to($withUser->email)->send(new NotificationDemandeTraitee($withUser->prenom, $withUser->nom,$demande->type_document));
+
+        return response()->json(['message' => 'État de la demande mis à jour avec succès et e-mail envoyé à l\'étudiant'], 200);
+        }
+
+        return response()->json(['message' => 'Impossible de mettre à jour l\'état de la demande'], 400);
+    }
+
+
+
+
     public function store(Request $request)
 {
     $validatedData = $request->validate([
@@ -23,6 +47,7 @@ class DocumentController extends Controller
         'filiere' => 'required',
         'type_document' => 'required',
         'description' => 'required',
+        'etudiant_id'=>'required'
     ]);
 
     $demande = new Demande($validatedData);
@@ -31,7 +56,7 @@ class DocumentController extends Controller
     $documentTypes = [
         'Attestation De Bourse' => 'storeAttestationBourse',
         'Certificat De Scolarite' => 'storeCertificatScolarite',
-        'Relevé De Notes'=>'storeReleveNotes',
+        'Releve De Notes'=>'storeReleveNotes',
         'Convention De Stage'=>'storeConventionDeStage',
         'Terrain De Sport'=>'storeTerrainDeSport'
             ];
@@ -40,11 +65,15 @@ class DocumentController extends Controller
     if (array_key_exists($typeDocument, $documentTypes)) {
         $this->{$documentTypes[$typeDocument]}($request, $demande->id);
     }
-    $userEmail = $request->input('hammad.mohamed2ensam-casa.com');
-    Mail::to('abdoukefsi@gmail.com')->send(new ConfirmationEmail());
+
+        $id = $demande->etudiant_id;
+        $etudiant = Etudiant::where('id', $id)->get();
+        $withUser = Etudiant::with('user')->find($id)->user;
+ 
+    $userEmail = $request->input('hammad.mohamed@ensam-casa.com');
+    Mail::to($withUser->email)->send(new ConfirmationEmail($withUser->nom,$withUser->prenom));
 
     // return response()->json(['message' => 'Form submitted successfully']);
-
     return response()->json(['message' => 'Demande enregistrée avec succès'], 201);
 }
 

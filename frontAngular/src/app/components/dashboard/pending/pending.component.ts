@@ -15,7 +15,7 @@ export class PendingComponent implements OnInit{
   }
 
   getApprouvedDemandes(){
-    this.approuvedDemandes.getFiltredData("pending").subscribe((res: any) => {
+    this.approuvedDemandes.getFiltredData("En Cours").subscribe((res: any) => {
       console.log(res);
       this.lengthPending = res.length;
     })
