@@ -6,6 +6,8 @@ import { DemandesData } from '../../../services/dashboard/demande-data.service';
   templateUrl: './pending.component.html',
   styleUrl: './pending.component.css'
 })
+
+
 export class PendingComponent implements OnInit{
   lengthPending : number;
   constructor(private approuvedDemandes : DemandesData) { }
@@ -20,5 +22,4 @@ export class PendingComponent implements OnInit{
       this.lengthPending = res.length;
     })
   }
-
 }

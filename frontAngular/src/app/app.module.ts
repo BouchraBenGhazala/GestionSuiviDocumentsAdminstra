@@ -33,13 +33,15 @@ import { EtudiantComponent } from './components/etudiant/etudiant.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TotalComponent } from './components/dashboard/total/total.component';
 import { ApprouvedComponent } from './components/dashboard/approuved/approuved.component';
-import { PendingComponent } from './components/dashboard/pending/pending.component';
 import { MainComponent } from './components/dashboard/main/main.component';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ApprovedComponent } from './components/approved/approved.component';
+import { PendingComponent } from './components/dashboard/pending/pending.component';
+import { EnCoursComponent } from './components/en-cours/en-cours.component';
+// import { EnCoursComponent } from './components/enCours/enCours.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,12 +62,13 @@ import { ApprovedComponent } from './components/approved/approved.component';
     FormulaireTerrainSportComponent,
     TotalComponent,
     ApprouvedComponent,
-    PendingComponent,
     MainComponent,
     DashboardComponent,
     NavbarComponent,
     ApprovedComponent,
-    SidebarComponent
+    SidebarComponent,
+    PendingComponent,
+    EnCoursComponent,
   ],
   
   imports: [

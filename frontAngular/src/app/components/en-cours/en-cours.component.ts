@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DemandesData } from '../../services/dashboard/demande-data.service';
 
 
@@ -14,33 +14,31 @@ interface Demande {
 }
 
 
-
 @Component({
-  selector: 'app-approved',
-  templateUrl: './approved.component.html',
-  styleUrl: './approved.component.css'
+  selector: 'app-en-cours',
+  templateUrl: './en-cours.component.html',
+  styleUrl: './en-cours.component.css'
 })
 
 
-export class ApprovedComponent implements OnInit {
+export class EnCoursComponent {
 
-  approvedData : any = [];
+  pendingData: any = [];
   selectedDemande: Demande | null;
   displayDetails: boolean = false;
   currentEtudiant: any = [];
   infosType: any = [];
 
-
-  constructor(private demandesApproved : DemandesData) { }
+  constructor(private demandesPending: DemandesData) { }
 
   ngOnInit(): void {
     this.getApproveddemandes();
   }
 
-  getApproveddemandes(){
-    this.demandesApproved.getFiltredData("Traitee").subscribe(res => this.approvedData = res)
+  getApproveddemandes() {
+    this.demandesPending.getFiltredData("En Cours").subscribe(res => this.pendingData = res)
   }
-  
+
   async handleClickRow(demande: Demande) {
     console.log("click" + demande);
 
@@ -56,7 +54,7 @@ export class ApprovedComponent implements OnInit {
 
       //get infos type of demandes
 
-      this.infosType = await this.getInfosType(demande.type_document, demande.id) ;
+      this.infosType = await this.getInfosType(demande.type_document, demande.id);
 
       // state of dispaly
       this.selectedDemande = demande;
@@ -70,7 +68,7 @@ export class ApprovedComponent implements OnInit {
 
     console.log(typeDemandes);
 
-    const infosTypeNoformated = await this.demandesApproved.getInfosTypeDemande(typeDemandes, id);
+    const infosTypeNoformated = await this.demandesPending.getInfosTypeDemande(typeDemandes, id);
 
     const formattedInfos = infosTypeNoformated.map((item: any) => {
 
@@ -89,9 +87,9 @@ export class ApprovedComponent implements OnInit {
   }
 
   private async getConcernEtudiant(id: number) {
-    const idEtudiant = this.approvedData.find((d: Demande) => d.id === id).etudiant_id;
+    const idEtudiant = this.pendingData.find((d: Demande) => d.id === id).etudiant_id;
     console.log(idEtudiant);
-    const result: any = await this.demandesApproved.getEtudiant(idEtudiant);
+    const result: any = await this.demandesPending.getEtudiant(idEtudiant);
     console.log(result);
     return result[0];
   }
@@ -100,3 +98,4 @@ export class ApprovedComponent implements OnInit {
     return input.replace(/\b\w/g, (char) => char.toUpperCase());
   }
 }
+

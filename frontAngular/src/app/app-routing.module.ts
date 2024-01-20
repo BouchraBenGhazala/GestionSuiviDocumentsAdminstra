@@ -16,7 +16,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
 import { FormEtudiantComponent } from './form-etudiant/form-etudiant.component';
 import { ApprovedComponent } from './components/approved/approved.component';
-import { PendingComponent } from './components/pending/pending.component';
+import { EnCoursComponent } from './components/en-cours/en-cours.component';
 
 const appRoutes: Routes = [
   {
@@ -86,7 +86,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'pending',
-    component : PendingComponent
+    component : EnCoursComponent
   }
 ];
 

@@ -26,18 +26,18 @@
                                 <th class="border-top-0">Année</th>
                             </tr>
                         </thead>
-                        <tbody *ngFor="let approved of approvedData">
+                        <tbody *ngFor="let pending of pendingData">
                             <tr >
-                                <td class="border-top-0">{{approved.id}}</td>
-                                <td class="border-top-0">{{approved.etat}}</td>
-                                <td class="border-top-0">{{approved.type_document}}</td>
-                                <td class="border-top-0">{{approved.description}}</td>
-                                <td class="border-top-0">{{approved.niveau}}</td>
-                                <td class="border-top-0">{{approved.filiere}}</td>
-                                <td class="border-top-0">{{approved.annee}}</td>
-                                <td class="border-top-0"><i class="fa-solid fa-caret-down" style="font-size: 1.75em;" (click)="handleClickRow(approved)"></i></td>
+                                <td class="border-top-0">{{pending.id}}</td>
+                                <td class="border-top-0">{{pending.etat}}</td>
+                                <td class="border-top-0">{{pending.type_document}}</td>
+                                <td class="border-top-0">{{pending.description}}</td>
+                                <td class="border-top-0">{{pending.niveau}}</td>
+                                <td class="border-top-0">{{pending.filiere}}</td>
+                                <td class="border-top-0">{{pending.annee}}</td>
+                                <td class="border-top-0"><i class="fa-solid fa-caret-down" style="font-size: 1.75em;" (click)="handleClickRow(pending)"></i></td>
                             </tr>
-                            <tr *ngIf="selectedDemande === approved && displayDetails">
+                            <tr *ngIf="selectedDemande === pending && displayDetails">
                                 <td colspan="8">
                                     <div class="row p-4">
                                         <div class="col-sm-12 col-md-12 col-lg-6">
@@ -48,14 +48,14 @@
                                                 <p>CNE : {{currentEtudiant.cne}} </p>
                                                 <p>Nom : {{currentEtudiant.nom}} </p>
                                                 <p>prenom : {{currentEtudiant.prenom}} </p>
-                                                <p>filiere : {{approved.filiere}} </p>
-                                                <p>niveau : {{approved.niveau}} </p>
+                                                <p>filiere : {{pending.filiere}} </p>
+                                                <p>niveau : {{pending.niveau}} </p>
                                             </span>
                                         </div>
 
                                         <div class="col-sm-12 col-md-12 col-lg-6">
                                             <h5>Plus d'information sur la demande</h5>
-                                            <h6>{{approved.type_document}}</h6>
+                                            <h6>{{pending.type_document}}</h6>
                                             <span *ngFor="let infos of infosType">
                                                 <ng-container *ngFor="let item of infos | keyvalue">
                                                     <p>{{ item.key }}: {{ item.value }}</p>
