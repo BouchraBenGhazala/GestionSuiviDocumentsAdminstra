@@ -20,12 +20,5 @@ class ConventionSeeder extends Seeder
             'demande_id'=> 1,
 
         ]);
-        ConventionStage::create([
-            'societe' => 'sckbvjsb',
-            'date_debut' => now(),
-            'date_fin' => now(),
-            'demande_id'=> 2,
-
-        ]);
     }
 }

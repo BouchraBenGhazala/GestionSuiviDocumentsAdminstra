@@ -25,8 +25,11 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(EtudiantSeeder::class);
         $this->call(DemandesSeeder::class);
-
+        $this->call(AttestationSeeder::class);
+        $this->call(CertificatSeeder::class);
         $this->call(ConventionSeeder::class);
+        $this->call(ReleveSeeder::class);
+
 
     }
 }

@@ -16,10 +16,10 @@ class UserSeeder extends Seeder
     {
 
          User::create([
-             'nom' => 'Benghazala',
-             'prenom' => 'Bouchra',
-             'email' => 'bouchrabenghazala@gmail.com',
-             'password' => bcrypt('stage2023'),
+             'nom' => 'Mme El Faquih',
+             'prenom' => 'Loubna',
+             'email' => 'mmeElFaqihLoubna@gmail.com',
+             'password' => bcrypt('loubna123'),
              'role' =>'admin'
          ]);
          User::create([
@@ -35,6 +35,13 @@ class UserSeeder extends Seeder
             'prenom' => 'Abdou',
             'email' => 'Abdou@gmail.com',
             'password' => bcrypt('kefsi'),
+            'role' =>'etudiant'
+        ]);
+        User::create([
+            'nom' => 'benghazala',
+            'prenom' => 'bouchra',
+            'email' => 'ghazala@gmail.com',
+            'password' => bcrypt('ghazala'),
             'role' =>'etudiant'
         ]);
 

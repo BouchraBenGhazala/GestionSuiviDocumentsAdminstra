@@ -6,7 +6,9 @@ import { DemandesData } from '../../services/dashboard/demande-data.service';
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent{
+export class DashboardComponent implements OnInit{
+
+  role : string | null;
    
   //  getFiltredDemande(state: String){
   //     this.demandesData.getFiltredData().subscribe(res => {
@@ -14,4 +16,8 @@ export class DashboardComponent{
   //       this.demandes = res;
   //     })
   // }
+
+  ngOnInit(): void {
+    this.role = sessionStorage.getItem('role');
+  }
 }

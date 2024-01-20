@@ -20,7 +20,6 @@ export class AppComponent implements OnInit, OnChanges{
     this.autService.authStatus.subscribe(value=>this.loggedIn=value); 
     console.log(this.loggedIn);
     this.role  = sessionStorage.getItem('role');
-    console.log(this.role);
     
   }
 
