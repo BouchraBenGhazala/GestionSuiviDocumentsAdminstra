@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
     sessionStorage.setItem('username', username);
     sessionStorage.setItem('userprenom', user_prenom);
     sessionStorage.setItem('userId', userId);
+    sessionStorage.setItem('role', userRole);
     if (userRole === 'etudiant') {
       this.router.navigateByUrl('/dashboard2');
     } else if (userRole === 'admin') {
