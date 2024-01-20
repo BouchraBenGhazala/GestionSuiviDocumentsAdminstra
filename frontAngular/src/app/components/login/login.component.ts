@@ -52,9 +52,9 @@ export class LoginComponent implements OnInit {
     sessionStorage.setItem('userprenom', user_prenom);
     sessionStorage.setItem('userId', userId);
     if (userRole === 'etudiant') {
-      this.router.navigateByUrl('/etudiant');
+      this.router.navigateByUrl('/dashboard2');
     } else if (userRole === 'admin') {
-      this.router.navigateByUrl('/administrateur');
+      this.router.navigateByUrl('/dashboard');
     } else {
       this.router.navigateByUrl('/login');
     }
