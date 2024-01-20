@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DemandesData } from '../../../services/dashboard/demande-data.service';
+import { Router } from '@angular/router';
 interface Demande {
   id: number;
   etat: string;
@@ -24,7 +25,7 @@ export class Main2Component implements OnInit{
   currentEtudiant: any = [];
   infosType : any = [];
 
-  constructor(private demandesData: DemandesData) { }
+  constructor(private demandesData: DemandesData,private router: Router) { }
 
   ngOnInit(): void {
     this.getAllDemandesEtudiant();
@@ -43,6 +44,13 @@ export class Main2Component implements OnInit{
         this.getAllDemandes();
       });
     }
+
+  }
+  viewMore(demande: Demande){
+    if(demande.etat === 'En Cours')
+      this.router.navigateByUrl('/encours2');
+    else if(demande.etat === 'Traitee')
+      this.router.navigateByUrl('/approved2');
 
   }
 

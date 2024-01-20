@@ -46,6 +46,8 @@ import { Main2Component } from './components/dashboard2/main2/main2.component';
 import { Dashboard2Component } from './components/dashboard2/dashboard2.component';
 import { Pending2Component } from './components/dashboard2/pending2/pending2.component';
 import { Approuved2Component } from './components/dashboard2/approuved2/approuved2.component';
+import { Approved2Component } from './components/dashboard2/approved2/approved2.component';
+import { Encours2Component } from './components/dashboard2/encours2/encours2.component';
 // import { EnCoursComponent } from './components/enCours/enCours.component';
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { Approuved2Component } from './components/dashboard2/approuved2/approuve
     Main2Component,
     Dashboard2Component,
     Pending2Component,
-    Approuved2Component
+    Approuved2Component,
+    Approved2Component,
+    Encours2Component
   ],
   
   imports: [

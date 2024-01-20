@@ -31,7 +31,7 @@ export class Pending2Component implements OnInit{
   }
   
   getLengthOfPendingDemandesEtudiant() {
-    this.approuvedDemandes.getFiltredDataEtudiant(this.etudiantId,"pending").subscribe((res: any) => {
+    this.approuvedDemandes.getFiltredDataEtudiant(this.etudiantId,"En Cours").subscribe((res: any) => {
       console.log(res);
       this.lengthPending = res.length;
     })

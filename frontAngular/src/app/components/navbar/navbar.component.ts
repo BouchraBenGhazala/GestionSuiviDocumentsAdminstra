@@ -11,7 +11,7 @@ import { TokenService } from '../../services/token.service';
 export class NavbarComponent implements OnInit {
   public loggedIn:boolean;
 
-  @Input() role : string;
+  @Input() role : string | null;
 
     constructor(
       private Auth:AuthService,

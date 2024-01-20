@@ -18,6 +18,8 @@ import { FormEtudiantComponent } from './form-etudiant/form-etudiant.component';
 import { ApprovedComponent } from './components/approved/approved.component';
 import { EnCoursComponent } from './components/en-cours/en-cours.component';
 import { Dashboard2Component } from './components/dashboard2/dashboard2.component';
+import { Approved2Component } from './components/dashboard2/approved2/approved2.component';
+import { Encours2Component } from './components/dashboard2/encours2/encours2.component';
 
 const appRoutes: Routes = [
   {
@@ -104,7 +106,19 @@ const appRoutes: Routes = [
     component : EnCoursComponent,
     canActivate: [AfterLoginService,AuthGuardService],
     data: { expectedRole: 'admin' }, 
-  }
+  },
+  {
+    path: 'approved2',
+    component : Approved2Component,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'etudiant' }, 
+  },
+  {
+    path: 'encours2',
+    component : Encours2Component,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'etudiant' }, 
+  },
 ];
 
 @NgModule({

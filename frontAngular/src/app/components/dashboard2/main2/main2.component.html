@@ -9,8 +9,9 @@
                         [(ngModel)]="selectedState" (change)="onFilterChange()">
                             <option value="" disabled selected>Filtrer</option>
                             <option value="all">Tous</option>
-                            <option value="approved">Traités</option>
-                            <option value="pending">En Attente</option>
+                            
+                            <option value="Traitee">Traités</option>
+                            <option value="En Cours">En Cours</option>
                         </select>
                     </form>
                 </div>
@@ -26,7 +27,7 @@
                             <th class="border-top-0">niveau</th>
                             <th class="border-top-0">filiere</th>
                             <th class="border-top-0">année</th>
-                            <th class="border-top-0"> </th>
+                            <th class="border-top-0">View more</th>
                         </tr>
                     </thead>
                     <ng-container *ngIf="demandes && demandes.length > 0; else elseBlock">
@@ -40,6 +41,7 @@
                                 <td>{{demande.niveau}}</td>
                                 <td>{{demande.filiere}}</td>
                                 <td>{{demande.annee}}</td>
+                                <td><i class="fa fa-external-link" style="font-size: 1em;" (click)="viewMore(demande)"></i></td>
 
                             </tr>
 
