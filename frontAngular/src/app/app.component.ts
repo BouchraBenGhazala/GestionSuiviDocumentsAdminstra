@@ -12,14 +12,14 @@ export class AppComponent implements OnInit, OnChanges{
   title = 'frontAngular';
   sideNav: any = { collapsed: true };
   public loggedIn: boolean;
-  public role: string;
+  public role: string | null;
 
   constructor(public autService:AuthService, public token:TokenService, private route: ActivatedRoute){ }
 
   ngOnInit(): void {
     this.autService.authStatus.subscribe(value=>this.loggedIn=value); 
     console.log(this.loggedIn);
-    this.role = this.token.getRole();
+    this.role  = sessionStorage.getItem('role');
     console.log(this.role);
     
   }
