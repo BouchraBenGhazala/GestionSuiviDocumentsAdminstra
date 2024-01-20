@@ -88,6 +88,12 @@ const appRoutes: Routes = [
     data: { expectedRole: 'etudiant' }, 
   },
   {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'etudiant' }, 
+  },
+  {
     path: 'approved',
     component : ApprovedComponent,
     canActivate: [AfterLoginService,AuthGuardService],
