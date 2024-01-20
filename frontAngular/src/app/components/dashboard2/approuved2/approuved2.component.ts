@@ -31,7 +31,7 @@ export class Approuved2Component implements OnInit{
   }
   
   getLengthOfPendingDemandesEtudiant() {
-    this.approuvedDemandes.getFiltredDataEtudiant(this.etudiantId,"approved").subscribe((res: any) => {
+    this.approuvedDemandes.getFiltredDataEtudiant(this.etudiantId,"Traitee").subscribe((res: any) => {
       console.log(res);
       this.lengthApprouved = res.length;
     })

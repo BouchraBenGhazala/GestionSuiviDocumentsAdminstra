@@ -51,5 +51,5 @@ Route::get('/getEtudiant', [ApiController::class, 'getEtudiant']);
 Route::get('/getInfosType/{type}_{id}', [ApiController::class, 'getInfosType'])->where('type', '^ConventionStage|CertificatScolarite|AttestationBourse|ReleveNotes$');
 
 //Dash etudiant
-Route::get('/getFiltredDemandesEtudiant/{etudiantId}/{state}', [ApiController::class, 'getFiltresDemandesEtudiant'])->where('state', '^(approved|pending)$');
+Route::get('/getFiltredDemandesEtudiant/{etudiantId}/{state}', [ApiController::class, 'getFiltresDemandesEtudiant'])->where('state', '^(Traitee|En Cours)$');
 Route::get('/getEtudiantIdFromUserId/{userId}', [ApiController::class,'getEtudiantIdFromUserId']);
