@@ -29,12 +29,16 @@ export class ApprovedComponent implements OnInit {
   displayDetails: boolean = false;
   currentEtudiant: any = [];
   infosType: any = [];
+  role : string |null;
+
 
 
   constructor(private demandesApproved : DemandesData) { }
 
   ngOnInit(): void {
     this.getApproveddemandes();
+    this.role = sessionStorage.getItem('role');
+
   }
 
   getApproveddemandes(){

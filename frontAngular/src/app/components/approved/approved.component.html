@@ -1,77 +1,85 @@
-<div class="container-fluid mt-5">
+<ng-container *ngIf="role === 'admin'">
+    <div class="container-fluid mt-5">
 
-    <div class="row">
-        <div class="col-md-12 col-lg-12 col-sm-12">
-            <div class="white-box">
-                <div class="d-md-flex mb-3">
-                    <h3 class="box-title mb-0">Demandes Approuvées</h3>
-                    <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
-                        <select class="form-select shadow-none row border-top" id="cycle-select">
-                            <option value="">Sélectionnez la référence</option>
-                            <option >cccccc</option>
-                        </select>
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="white-box">
+                    <div class="d-md-flex mb-3">
+                        <h3 class="box-title mb-0">Demandes Approuvées</h3>
+                        <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
+                            <select class="form-select shadow-none row border-top" id="cycle-select">
+                                <option value="">Sélectionnez la référence</option>
+                                <option>cccccc</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table no-wrap" id="cycle-table">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0">Réference</th>
+                                    <th class="border-top-0">Statut</th>
+                                    <th class="border-top-0">Type</th>
+                                    <th class="border-top-0">Description</th>
+                                    <th class="border-top-0">Niveau</th>
+                                    <th class="border-top-0">Filiére</th>
+                                    <th class="border-top-0">Année</th>
+                                    <th class="border-top-0"> </th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let approved of approvedData">
+                                <tr>
+                                    <td class="border-top-0">{{approved.id}}</td>
+                                    <td class="border-top-0">{{approved.etat}}</td>
+                                    <td class="border-top-0">{{approved.type_document}}</td>
+                                    <td class="border-top-0">{{approved.description}}</td>
+                                    <td class="border-top-0">{{approved.niveau}}</td>
+                                    <td class="border-top-0">{{approved.filiere}}</td>
+                                    <td class="border-top-0">{{approved.annee}}</td>
+                                    <td class="border-top-0"><i class="fa-solid fa-caret-down"
+                                            style="font-size: 1.75em;" (click)="handleClickRow(approved)"></i></td>
+                                </tr>
+                                <tr *ngIf="selectedDemande === approved && displayDetails">
+                                    <td colspan="8">
+                                        <div class="row p-4">
+                                            <div class="col-sm-12 col-md-12 col-lg-6">
+                                                <h5>Informations sur l'etudiant</h5>
+                                                <img src="../../../assets/img_avatar3.png" alt="image etudiant"
+                                                    style="float: left; width: 30%;">
+                                                <span>
+                                                    <p>Code apogee:{{ currentEtudiant.code_apogee }}</p>
+                                                    <p>CNE : {{currentEtudiant.cne}} </p>
+                                                    <p>Nom : {{currentEtudiant.nom}} </p>
+                                                    <p>prenom : {{currentEtudiant.prenom}} </p>
+                                                    <p>filiere : {{approved.filiere}} </p>
+                                                    <p>niveau : {{approved.niveau}} </p>
+                                                </span>
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-12 col-lg-6">
+                                                <h5>Plus d'information sur la demande</h5>
+                                                <h6>{{approved.type_document}}</h6>
+                                                <span *ngFor="let infos of infosType">
+                                                    <ng-container *ngFor="let item of infos | keyvalue">
+                                                        <p>{{ item.key }}: {{ item.value }}</p>
+                                                    </ng-container>
+                                                </span>
+                                            </div>
+
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="table-responsive">
-                    <table class="table no-wrap" id="cycle-table">
-                        <thead>
-                            <tr>
-                                <th class="border-top-0">Réference</th>
-                                <th class="border-top-0">Statut</th>
-                                <th class="border-top-0">Type</th>
-                                <th class="border-top-0">Description</th>
-                                <th class="border-top-0">Niveau</th>
-                                <th class="border-top-0">Filiére</th>
-                                <th class="border-top-0">Année</th>
-                                <th class="border-top-0"> </th>
-                            </tr>
-                        </thead>
-                        <tbody *ngFor="let approved of approvedData">
-                            <tr >
-                                <td class="border-top-0">{{approved.id}}</td>
-                                <td class="border-top-0">{{approved.etat}}</td>
-                                <td class="border-top-0">{{approved.type_document}}</td>
-                                <td class="border-top-0">{{approved.description}}</td>
-                                <td class="border-top-0">{{approved.niveau}}</td>
-                                <td class="border-top-0">{{approved.filiere}}</td>
-                                <td class="border-top-0">{{approved.annee}}</td>
-                                <td class="border-top-0"><i class="fa-solid fa-caret-down" style="font-size: 1.75em;" (click)="handleClickRow(approved)"></i></td>
-                            </tr>
-                            <tr *ngIf="selectedDemande === approved && displayDetails">
-                                <td colspan="8">
-                                    <div class="row p-4">
-                                        <div class="col-sm-12 col-md-12 col-lg-6">
-                                            <h5>Informations sur l'etudiant</h5>
-                                            <img src="../../../assets/img_avatar3.png" alt="image etudiant" style="float: left; width: 30%;">
-                                            <span>
-                                                <p>Code apogee:{{ currentEtudiant.code_apogee }}</p>
-                                                <p>CNE : {{currentEtudiant.cne}} </p>
-                                                <p>Nom : {{currentEtudiant.nom}} </p>
-                                                <p>prenom : {{currentEtudiant.prenom}} </p>
-                                                <p>filiere : {{approved.filiere}} </p>
-                                                <p>niveau : {{approved.niveau}} </p>
-                                            </span>
-                                        </div>
 
-                                        <div class="col-sm-12 col-md-12 col-lg-6">
-                                            <h5>Plus d'information sur la demande</h5>
-                                            <h6>{{approved.type_document}}</h6>
-                                            <span *ngFor="let infos of infosType">
-                                                <ng-container *ngFor="let item of infos | keyvalue">
-                                                    <p>{{ item.key }}: {{ item.value }}</p>
-                                                  </ng-container>
-                                            </span>
-                                        </div>
-                                        
-                                    </div>
-                                </td>
-
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
-
         </div>
     </div>
-</div>
+</ng-container>
+
+<ng-container *ngIf="role === 'etudiant'">
+    <app-approved2></app-approved2>
+</ng-container>

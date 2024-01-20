@@ -81,7 +81,6 @@ const appRoutes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AfterLoginService,AuthGuardService],
-    data: { expectedRole: 'admin' }, 
   },
   {
     path: 'dashboard2',
@@ -99,13 +98,11 @@ const appRoutes: Routes = [
     path: 'approved',
     component : ApprovedComponent,
     canActivate: [AfterLoginService,AuthGuardService],
-    data: { expectedRole: 'admin' }, 
   },
   {
     path: 'pending',
     component : EnCoursComponent,
     canActivate: [AfterLoginService,AuthGuardService],
-    data: { expectedRole: 'admin' }, 
   },
   {
     path: 'approved2',

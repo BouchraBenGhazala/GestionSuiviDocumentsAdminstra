@@ -1,76 +1,84 @@
-<div class="container-fluid mt-5">
+<ng-container *ngIf="role === 'admin'">
+    <div class="container-fluid mt-5">
 
-    <div class="row">
-        <div class="col-md-12 col-lg-12 col-sm-12">
-            <div class="white-box">
-                <div class="d-md-flex mb-3">
-                    <h3 class="box-title mb-0">Demandes Approuvées</h3>
-                    <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
-                       <button>Réduire</button>
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="white-box">
+                    <div class="d-md-flex mb-3">
+                        <h3 class="box-title mb-0">Demandes Approuvées</h3>
+                        <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
+                            <button>Réduire</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table no-wrap" id="cycle-table">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0">Réference</th>
+                                    <th class="border-top-0">Statut</th>
+                                    <th class="border-top-0">Type</th>
+                                    <th class="border-top-0">Description</th>
+                                    <th class="border-top-0">Niveau</th>
+                                    <th class="border-top-0">Filiére</th>
+                                    <th class="border-top-0">Année</th>
+                                    <th class="border-top-0"> </th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let pending of pendingData">
+                                <tr>
+                                    <td class="border-top-0">{{pending.id}}</td>
+                                    <td class="border-top-0">{{pending.etat}}</td>
+                                    <td class="border-top-0">{{pending.type_document}}</td>
+                                    <td class="border-top-0">{{pending.description}}</td>
+                                    <td class="border-top-0">{{pending.niveau}}</td>
+                                    <td class="border-top-0">{{pending.filiere}}</td>
+                                    <td class="border-top-0">{{pending.annee}}</td>
+                                    <td class="border-top-0"><i class="fa-solid fa-caret-down"
+                                            style="font-size: 1.75em;" (click)="handleClickRow(pending)"></i></td>
+                                </tr>
+                                <tr *ngIf="selectedDemande === pending && displayDetails && openDetails">
+                                    <td colspan="8">
+                                        <div class="row p-4">
+                                            <div class="col-sm-12 col-md-12 col-lg-6">
+                                                <h5>Informations sur l'etudiant</h5>
+                                                <img src="../../../assets/img_avatar3.png" alt="image etudiant"
+                                                    style="float: left; width: 30%;">
+                                                <span>
+                                                    <p>Code apogee:{{ currentEtudiant.code_apogee }}</p>
+                                                    <p>CNE : {{currentEtudiant.cne}} </p>
+                                                    <p>Nom : {{currentEtudiant.nom}} </p>
+                                                    <p>prenom : {{currentEtudiant.prenom}} </p>
+                                                    <p>filiere : {{pending.filiere}} </p>
+                                                    <p>niveau : {{pending.niveau}} </p>
+                                                </span>
+
+                                            </div>
+
+                                            <div class="col-sm-12 col-md-12 col-lg-6">
+                                                <h5>Plus d'information sur la demande</h5>
+                                                <h6>{{pending.type_document}}</h6>
+                                                <span *ngFor="let infos of infosType">
+                                                    <ng-container *ngFor="let item of infos | keyvalue">
+                                                        <p>{{ item.key }}: {{ item.value }}</p>
+                                                    </ng-container>
+                                                </span>
+                                                <button type="button" class="btn btn-primary"
+                                                    (click)="validerDemande(pending)">Valider</button>
+                                            </div>
+
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <div class="table-responsive">
-                    <table class="table no-wrap" id="cycle-table">
-                        <thead>
-                            <tr>
-                                <th class="border-top-0">Réference</th>
-                                <th class="border-top-0">Statut</th>
-                                <th class="border-top-0">Type</th>
-                                <th class="border-top-0">Description</th>
-                                <th class="border-top-0">Niveau</th>
-                                <th class="border-top-0">Filiére</th>
-                                <th class="border-top-0">Année</th>
-                                <th class="border-top-0"> </th>
-                            </tr>
-                        </thead>
-                        <tbody *ngFor="let pending of pendingData">
-                            <tr >
-                                <td class="border-top-0">{{pending.id}}</td>
-                                <td class="border-top-0">{{pending.etat}}</td>
-                                <td class="border-top-0">{{pending.type_document}}</td>
-                                <td class="border-top-0">{{pending.description}}</td>
-                                <td class="border-top-0">{{pending.niveau}}</td>
-                                <td class="border-top-0">{{pending.filiere}}</td>
-                                <td class="border-top-0">{{pending.annee}}</td>
-                                <td class="border-top-0"><i class="fa-solid fa-caret-down" style="font-size: 1.75em;" (click)="handleClickRow(pending)"></i></td>
-                            </tr>
-                            <tr *ngIf="selectedDemande === pending && displayDetails && openDetails">
-                                <td colspan="8">
-                                    <div class="row p-4">
-                                        <div class="col-sm-12 col-md-12 col-lg-6">
-                                            <h5>Informations sur l'etudiant</h5>
-                                            <img src="../../../assets/img_avatar3.png" alt="image etudiant" style="float: left; width: 30%;">
-                                            <span>
-                                                <p>Code apogee:{{ currentEtudiant.code_apogee }}</p>
-                                                <p>CNE : {{currentEtudiant.cne}} </p>
-                                                <p>Nom : {{currentEtudiant.nom}} </p>
-                                                <p>prenom : {{currentEtudiant.prenom}} </p>
-                                                <p>filiere : {{pending.filiere}} </p>
-                                                <p>niveau : {{pending.niveau}} </p>
-                                            </span>
-                                            
-                                        </div>
 
-                                        <div class="col-sm-12 col-md-12 col-lg-6">
-                                            <h5>Plus d'information sur la demande</h5>
-                                            <h6>{{pending.type_document}}</h6>
-                                            <span *ngFor="let infos of infosType">
-                                                <ng-container *ngFor="let item of infos | keyvalue">
-                                                    <p>{{ item.key }}: {{ item.value }}</p>
-                                                  </ng-container>
-                                            </span>
-                                            <td><button type="button" class="btn btn-primary" (click)="validerDemande(pending)">Valider</button></td>                              
-                                        </div>
-                                        
-                                    </div>
-                                </td>
-
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
-
         </div>
     </div>
-</div>
+</ng-container>
+<ng-container *ngIf="role === 'etudiant'">
+    <app-encours2></app-encours2>
+</ng-container>

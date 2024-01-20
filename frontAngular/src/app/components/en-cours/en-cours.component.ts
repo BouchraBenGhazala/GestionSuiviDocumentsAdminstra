@@ -31,12 +31,15 @@ export class EnCoursComponent {
   displayDetails: boolean = false;
   currentEtudiant: any = [];
   infosType: any = [];
+  role : string |null;
+
 
 
   constructor(private demandesPending: DemandesData, private http: HttpClient, private router : Router) { }
 
   ngOnInit(): void {
     this.getPendingdemandes();
+    this.role = sessionStorage.getItem('role');
 
   }
 

@@ -14,7 +14,7 @@
         <ul class="sidenav-nav ">
             <li class="sidenav-nav-item my-3" *ngFor="let data of navData; last as l">
                 <a class="sidenav-nav-link" 
-                    *ngIf="(loggedIn) || (!loggedIn && !l)"
+                    *ngIf="data.condition"
                     [routerLink]="[data.routeLink]" 
                     routerLinkActive="active"
                     [routerLinkActiveOptions]="{exact: true}"
