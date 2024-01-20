@@ -87,7 +87,6 @@ export class SidebarComponent implements OnInit, OnChanges {
     }
     if (last) {
       this.auth.logout();
-      
     }
   }
   

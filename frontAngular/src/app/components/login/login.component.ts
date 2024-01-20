@@ -30,8 +30,6 @@ export class LoginComponent implements OnInit {
       // data=> console.log(data),
       data => this.handleResponse(data),
       error => this.handleError(error),
-
-
     );
   }
   handleError(error: any) {

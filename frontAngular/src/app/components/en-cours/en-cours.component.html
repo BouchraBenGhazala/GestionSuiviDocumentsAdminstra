@@ -6,10 +6,7 @@
                 <div class="d-md-flex mb-3">
                     <h3 class="box-title mb-0">Demandes Approuvées</h3>
                     <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
-                        <select class="form-select shadow-none row border-top" id="cycle-select">
-                            <option value="">Sélectionnez la référence</option>
-                            <option >cccccc</option>
-                        </select>
+                       <button>Réduire</button>
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -23,7 +20,7 @@
                                 <th class="border-top-0">Niveau</th>
                                 <th class="border-top-0">Filiére</th>
                                 <th class="border-top-0">Année</th>
-                                <th class="border-top-0">Année</th>
+                                <th class="border-top-0"> </th>
                             </tr>
                         </thead>
                         <tbody *ngFor="let pending of pendingData">
@@ -37,7 +34,7 @@
                                 <td class="border-top-0">{{pending.annee}}</td>
                                 <td class="border-top-0"><i class="fa-solid fa-caret-down" style="font-size: 1.75em;" (click)="handleClickRow(pending)"></i></td>
                             </tr>
-                            <tr *ngIf="selectedDemande === pending && displayDetails">
+                            <tr *ngIf="selectedDemande === pending && displayDetails && openDetails">
                                 <td colspan="8">
                                     <div class="row p-4">
                                         <div class="col-sm-12 col-md-12 col-lg-6">
@@ -51,6 +48,7 @@
                                                 <p>filiere : {{pending.filiere}} </p>
                                                 <p>niveau : {{pending.niveau}} </p>
                                             </span>
+                                            
                                         </div>
 
                                         <div class="col-sm-12 col-md-12 col-lg-6">
@@ -61,6 +59,7 @@
                                                     <p>{{ item.key }}: {{ item.value }}</p>
                                                   </ng-container>
                                             </span>
+                                            <td><button type="button" class="btn btn-primary" (click)="validerDemande(pending)">Valider</button></td>                              
                                         </div>
                                         
                                     </div>

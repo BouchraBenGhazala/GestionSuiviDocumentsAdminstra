@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { FormEtudiantComponent } from './form-etudiant/form-etudiant.component';
 import { ApprovedComponent } from './components/approved/approved.component';
 import { EnCoursComponent } from './components/en-cours/en-cours.component';
+import { Dashboard2Component } from './components/dashboard2/dashboard2.component';
 
 const appRoutes: Routes = [
   {
@@ -81,12 +82,22 @@ const appRoutes: Routes = [
     data: { expectedRole: 'admin' }, 
   },
   {
+    path: 'dashboard2',
+    component: Dashboard2Component,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'etudiant' }, 
+  },
+  {
     path: 'approved',
-    component : ApprovedComponent
+    component : ApprovedComponent,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'admin' }, 
   },
   {
     path: 'pending',
-    component : EnCoursComponent
+    component : EnCoursComponent,
+    canActivate: [AfterLoginService,AuthGuardService],
+    data: { expectedRole: 'admin' }, 
   }
 ];
 

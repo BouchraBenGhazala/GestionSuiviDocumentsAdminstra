@@ -41,6 +41,11 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ApprovedComponent } from './components/approved/approved.component';
 import { PendingComponent } from './components/dashboard/pending/pending.component';
 import { EnCoursComponent } from './components/en-cours/en-cours.component';
+import { Total2Component } from './components/dashboard2/total2/total2.component';
+import { Main2Component } from './components/dashboard2/main2/main2.component';
+import { Dashboard2Component } from './components/dashboard2/dashboard2.component';
+import { Pending2Component } from './components/dashboard2/pending2/pending2.component';
+import { Approuved2Component } from './components/dashboard2/approuved2/approuved2.component';
 // import { EnCoursComponent } from './components/enCours/enCours.component';
 @NgModule({
   declarations: [
@@ -69,6 +74,11 @@ import { EnCoursComponent } from './components/en-cours/en-cours.component';
     SidebarComponent,
     PendingComponent,
     EnCoursComponent,
+    Total2Component,
+    Main2Component,
+    Dashboard2Component,
+    Pending2Component,
+    Approuved2Component
   ],
   
   imports: [

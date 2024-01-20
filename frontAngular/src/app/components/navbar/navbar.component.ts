@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Route, Router } from '@angular/router';
 import { TokenService } from '../../services/token.service';
@@ -10,6 +10,8 @@ import { TokenService } from '../../services/token.service';
 })
 export class NavbarComponent implements OnInit {
   public loggedIn:boolean;
+
+  @Input() role : string;
 
     constructor(
       private Auth:AuthService,
@@ -25,15 +27,7 @@ export class NavbarComponent implements OnInit {
 
     logout(event:MouseEvent){
       event.preventDefault();
-      // localStorage.removeItem('token');
-      this.token.remove();
-      sessionStorage.removeItem('token');
-      sessionStorage.removeItem('userId');
-      sessionStorage.removeItem('username');
-      sessionStorage.removeItem('userprenom');
-
-      this.Auth.changeAuthStatus(false);
-      this.router.navigateByUrl('/login');
+      this.Auth.logout();
     }
     
 }

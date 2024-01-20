@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DemandesData } from '../../../services/dashboard/demande-data.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 interface Demande {
   id: number;
   etat: string;
@@ -25,30 +26,30 @@ export class MainComponent implements OnInit {
   currentEtudiant: any = [];
   infosType: any = [];
 
-  constructor(private demandesData: DemandesData,private http: HttpClient) { }
+  constructor(private demandesData: DemandesData,private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllDemandes();
     console.log(this.selectedState);
   }
 
-  validerDemande(demande: any): void {
-    console.log('Fonction validerDemande appelée', demande);
+  // validerDemande(demande: any): void {
+  //   console.log('Fonction validerDemande appelée', demande);
 
-    if (demande.etat === 'En Cours') {
-      demande.etat = 'Traitee';
+  //   if (demande.etat === 'En Cours') {
+  //     demande.etat = 'Traitee';
 
-      // Faites appel à votre API pour mettre à jour la base de données
-      this.http.post(`http://127.0.0.1:8000/api/demande/update-etat/${demande.id}`, { nouvelEtat: 'Traitee' })
-        .subscribe(response => {
-          console.log('État de la demande mis à jour dans la base de données', response);
-        }, error => {
-          console.error('Erreur lors de la mise à jour de l\'état de la demande', error);
-          // Si la mise à jour échoue, vous voudrez probablement annuler la modification côté client
-          demande.etat = 'En Cours';
-        });
-    }
-  }
+  //     // Faites appel à votre API pour mettre à jour la base de données
+  //     this.http.post(`http://127.0.0.1:8000/api/demande/update-etat/${demande.id}`, { nouvelEtat: 'Traitee' })
+  //       .subscribe(response => {
+  //         console.log('État de la demande mis à jour dans la base de données', response);
+  //       }, error => {
+  //         console.error('Erreur lors de la mise à jour de l\'état de la demande', error);
+  //         // Si la mise à jour échoue, vous voudrez probablement annuler la modification côté client
+  //         demande.etat = 'En Cours';
+  //       });
+  //   }
+  // }
   
   getAllDemandes() {
     this.demandesData.getAllData().subscribe(res => {
@@ -61,6 +62,14 @@ export class MainComponent implements OnInit {
     this.selectedState === 'all' ? this.getAllDemandes() : this.demandesData.getFiltredData(this.selectedState).subscribe(res => {
       this.demandes = res;
     })
+  }
+
+  viewMore(demande: Demande){
+    if(demande.etat === 'En Cours')
+      this.router.navigateByUrl('/pending');
+    else if(demande.etat === 'Traitee')
+      this.router.navigateByUrl('/approved');
+
   }
 
   async handleClickRow(demande: Demande) {

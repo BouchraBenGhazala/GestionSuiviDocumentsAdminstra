@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { DemandesData } from '../../services/dashboard/demande-data.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 interface Demande {
@@ -23,21 +25,44 @@ interface Demande {
 
 export class EnCoursComponent {
 
+  openDetails: boolean = true;
   pendingData: any = [];
   selectedDemande: Demande | null;
   displayDetails: boolean = false;
   currentEtudiant: any = [];
   infosType: any = [];
 
-  constructor(private demandesPending: DemandesData) { }
+
+  constructor(private demandesPending: DemandesData, private http: HttpClient, private router : Router) { }
 
   ngOnInit(): void {
-    this.getApproveddemandes();
+    this.getPendingdemandes();
+
   }
 
-  getApproveddemandes() {
+  getPendingdemandes() {
     this.demandesPending.getFiltredData("En Cours").subscribe(res => this.pendingData = res)
   }
+
+  validerDemande(demande: any): void {
+    console.log('Fonction validerDemande appelée', demande);
+
+
+
+    // Faites appel à votre API pour mettre à jour la base de données
+      this.demandesPending.validerDemande(demande.id).subscribe(response => {
+        console.log('État de la demande mis à jour dans la base de données', response);}
+      // }, error => {
+      //   console.error('Erreur lors de la mise à jour de l\'état de la demande', error);
+      //   // Si la mise à jour échoue, vous voudrez probablement annuler la modification côté client
+      //   demande.etat = 'En Cours';
+      // }
+    );
+
+    this.router.navigateByUrl('/pending');
+
+  }
+
 
   async handleClickRow(demande: Demande) {
     console.log("click" + demande);
@@ -97,5 +122,8 @@ export class EnCoursComponent {
   private capitalizeWords(input: string): string {
     return input.replace(/\b\w/g, (char) => char.toUpperCase());
   }
+
+
+
 }
 

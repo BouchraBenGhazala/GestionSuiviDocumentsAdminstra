@@ -44,7 +44,7 @@ Route::group(['middleware' => 'api'], function () {
     
 
 });
-Route::post('/demande/update-etat/{id}', [DocumentController::class, 'updateEtat']);
+Route::post('/demande/update-etat/{id}', [DocumentController::class, 'updateEtat'])->where('id', '^[0-9]+$');
 
 Route::get('/getFiltredDemandes/{state}', [ApiController::class, 'getFiltresDemandes'])->where('state', '^(Traitee|En Cours)$');
 Route::get('/getEtudiant', [ApiController::class, 'getEtudiant']);

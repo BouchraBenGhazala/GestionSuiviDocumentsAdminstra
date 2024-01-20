@@ -27,8 +27,7 @@
                             <th class="border-top-0">niveau</th>
                             <th class="border-top-0">filiere</th>
                             <th class="border-top-0">année</th> 
-                            <th class="border-top-0"> </th>
-                            <th class="border-top-0"> </th>
+                            <th class="border-top-0">View more</th>
                         </tr>
                     </thead>
                     <ng-container *ngIf="demandes && demandes.length > 0; else elseBlock">
@@ -42,9 +41,7 @@
                                 <td>{{demande.niveau}}</td>
                                 <td>{{demande.filiere}}</td>
                                 <td>{{demande.annee}}</td>
-                                <td><i class="fa-solid fa-caret-down" style="font-size: 1.75em;"
-                                        (click)="handleClickRow(demande)"></i></td>
-                                <td><button type="button" class="btn btn-primary" (click)="validerDemande(demande)" [disabled]="demande.etat === 'Traitee'">Valider</button></td>                              
+                                <td><i class="fa fa-external-link" style="font-size: 1em;" (click)="viewMore(demande)"></i></td>
                             </tr>
                             <tr *ngIf="selectedDemande === demande && displayDetails">
                                 <td colspan="8">

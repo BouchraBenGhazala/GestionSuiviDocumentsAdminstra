@@ -27,6 +27,7 @@ export class AuthService implements OnInit{
   }
   logout(){
     this.toke.remove();
+    sessionStorage.clear();
     this.changeAuthStatus(false);
     this.router.navigateByUrl('/login');
   }

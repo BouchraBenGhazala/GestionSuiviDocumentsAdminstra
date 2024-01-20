@@ -25,10 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(EtudiantSeeder::class);
         $this->call(DemandesSeeder::class);
-<<<<<<< HEAD
+
         $this->call(ConventionSeeder::class);
 
-=======
->>>>>>> 3e67a7493123a2aee996ae5ed0c121ea3a95623a
     }
 }
