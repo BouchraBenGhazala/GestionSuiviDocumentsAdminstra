@@ -1,4 +1,4 @@
-import { INavbarData ,role, loggedIn } from "./helper";
+import { INavbarData} from "./helper";
 
 export const navbarData: INavbarData[] = [
     {
@@ -26,18 +26,18 @@ export const navbarData: INavbarData[] = [
     //     icon: 'fa fa-camera',
     //     label: 'Media'
     // },
-    {
-        condition: role === 'etudiant',
-        routeLink: 'pending',
-        icon: 'fa-solid fa-file-pen',
-        label: 'Faire une demande'
-    },
+    // {
+    //     condition: role === 'etudiant',
+    //     routeLink: 'form',
+    //     icon: 'fa-solid fa-file-pen',
+    //     label: 'Faire une demande'
+    // },
     
-    {
-        condition : loggedIn,
-        routeLink: 'logout',
-        icon: 'fas fa-sign-out-alt',
-        label: 'Log Out'
-    }
+    // {
+    //     condition : loggedIn,
+    //     routeLink: 'logout',
+    //     icon: 'fas fa-sign-out-alt',
+    //     label: 'Log Out'
+    // }
     
 ];

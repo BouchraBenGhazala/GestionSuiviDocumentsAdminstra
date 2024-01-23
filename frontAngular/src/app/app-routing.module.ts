@@ -58,11 +58,7 @@ const appRoutes: Routes = [
     canActivate: [AfterLoginService,AuthGuardService],
     data: { expectedRole: 'etudiant' },  
   },
-  // {
-  //   path:'**',
-  //   redirectTo:'login',
-  //   pathMatch:'full'
-  // },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path:'signup',
     component: SignupcomponentComponent,

@@ -48,6 +48,7 @@ import { Pending2Component } from './components/dashboard2/pending2/pending2.com
 import { Approuved2Component } from './components/dashboard2/approuved2/approuved2.component';
 import { Approved2Component } from './components/dashboard2/approved2/approved2.component';
 import { Encours2Component } from './components/dashboard2/encours2/encours2.component';
+import { FooterComponent } from './components/footer/footer.component';
 // import { EnCoursComponent } from './components/enCours/enCours.component';
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { Encours2Component } from './components/dashboard2/encours2/encours2.com
     Pending2Component,
     Approuved2Component,
     Approved2Component,
-    Encours2Component
+    Encours2Component,
+    FooterComponent
   ],
   
   imports: [

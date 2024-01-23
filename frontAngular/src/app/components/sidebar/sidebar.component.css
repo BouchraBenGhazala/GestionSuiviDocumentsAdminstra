@@ -68,16 +68,14 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    margin-top: 65px;
+    margin-top: 40px;
 }
 
 .sidenav-nav .sidenav-nav-item {
     width: 100%;
     margin-bottom: 0.625rem;
 }
-.sidenav-nav .sidenav-nav-item:last-child{
-    margin-top: 6%;
-}
+
 
 .sidenav-nav-link {
     display: flex;

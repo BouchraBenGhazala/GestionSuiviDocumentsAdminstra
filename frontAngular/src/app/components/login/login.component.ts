@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BouchraService } from '../../services/bouchra.service';
 import { TokenService } from '../../services/token.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     private bouchra: BouchraService,
     private token: TokenService,
     private router: Router,
-    private auth: AuthService
+    private auth: AuthService,
   ) { }
   public error = null;
 
@@ -52,9 +52,7 @@ export class LoginComponent implements OnInit {
     sessionStorage.setItem('userprenom', user_prenom);
     sessionStorage.setItem('userId', userId);
     sessionStorage.setItem('role', userRole);
-    if (userRole === 'etudiant') {
-      this.router.navigateByUrl('/dashboard2');
-    } else if (userRole === 'admin') {
+    if (username) {
       this.router.navigateByUrl('/dashboard');
     } else {
       this.router.navigateByUrl('/login');

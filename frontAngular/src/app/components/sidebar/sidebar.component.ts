@@ -39,9 +39,11 @@ export class SidebarComponent implements OnInit, OnChanges {
   screenWidth = 0;
   navData = navbarData;
   multiple: boolean = false;
-  @Input() loggedIn : boolean;
+  @Input() loggedIn : boolean | null | undefined;
+  @Input() role : string | null;
 
   @HostListener('window:resize', ['$event'])
+
   onResize(event: any) {
     this.screenWidth = window.innerWidth;
     if (this.screenWidth <= 768) {
@@ -54,6 +56,8 @@ export class SidebarComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
+    this.role = sessionStorage.getItem('role');
+    this.loggedIn = sessionStorage.getItem('token') !== null;
   }
   
 
@@ -77,7 +81,7 @@ export class SidebarComponent implements OnInit, OnChanges {
     return this.router.url.includes(data.routeLink) ? 'active' : '';
   }
 
-  shrinkItems(item: INavbarData, last: boolean): void {
+  shrinkItems(item: INavbarData): void {
     if (!this.multiple) {
       for (let modelItem of this.navData) {
         if (item !== modelItem && modelItem.expanded) {
@@ -85,9 +89,10 @@ export class SidebarComponent implements OnInit, OnChanges {
         }
       }
     }
-    if (last) {
-      this.auth.logout();
-    }
+  }
+
+  logOut(){
+    this.auth.logout();
   }
   
   ngOnChanges(changes: SimpleChanges): void {

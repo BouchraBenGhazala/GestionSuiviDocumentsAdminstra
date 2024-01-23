@@ -14,19 +14,21 @@ form {
     border-radius: 10px;
   }
   
-  button {
+  .form-group button {
     margin-top: 20px;
     padding: 10px;
-    background-color: #007BFF;
+    background-color: #28a745;
     color: #fff;
     cursor: pointer;
     border: none;
     border-radius: 5px;
+    width: 100%;
   }
   
-  button:disabled {
+  .form-group button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+    width: 100%;
   }
   html {
     height: 100%;
@@ -168,4 +170,18 @@ form {
       bottom: 100%;
     }
   }
+  .form-control {
+    border: 0;
+    border-bottom: 1px solid #ccc; 
+    border-radius: 0px;
+    box-shadow: none; 
+}
+
+/* Style lorsqu'un input est en focus */
+.form-control:focus {
+    border-bottom: 2.5px solid #28a745; /* Couleur de la bordure inférieure lorsque l'input est en focus */
+}
+.form-select option{
+  background: rgb(228, 242, 248);
+}
   

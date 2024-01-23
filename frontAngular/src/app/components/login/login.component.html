@@ -42,6 +42,9 @@
               <label class="label" for="password">Mot de passe</label>
               <input type="password" class="form-control" name="password" placeholder="Mot de passe"[(ngModel)]="form.password" required>
           </div>
+          <div class="alert alert-danger" [hidden]="!error">
+            {{error}}
+          </div>
           <div class="form-group">
               <button type="submit" class="form-control btn btn-primary rounded submit px-3">Login</button>
           </div>

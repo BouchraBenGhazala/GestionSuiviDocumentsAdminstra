@@ -1,5 +1,4 @@
 import { animate, style, transition, trigger } from "@angular/animations";
-import { AuthService } from "../../services/auth.service";
 
 export interface INavbarData {
     condition : boolean;
@@ -25,5 +24,5 @@ export const fadeInOut = trigger('fadeInOut', [
     ])
   ])
 
-export const role = sessionStorage.getItem('role');
-export const loggedIn = sessionStorage.getItem('token') !== null || sessionStorage.getItem('token') !== undefined;
+
+

@@ -48,9 +48,9 @@ export class Main2Component implements OnInit{
   }
   viewMore(demande: Demande){
     if(demande.etat === 'En Cours')
-      this.router.navigateByUrl('/encours2');
+      this.router.navigateByUrl('/pending');
     else if(demande.etat === 'Traitee')
-      this.router.navigateByUrl('/approved2');
+      this.router.navigateByUrl('/approved');
 
   }
 

@@ -7,7 +7,7 @@ export class TokenService {
 
   constructor() { }
 
-  handle(token: any, expirationMinutes: number = 10) {
+  handle(token: any, expirationMinutes: number = 60) {
     const expirationTime = Date.now() + expirationMinutes * 60 * 1000; // Convert minutes to milliseconds
     this.set(token, expirationTime);
     console.log(this.loggedIn());

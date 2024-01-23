@@ -6,9 +6,7 @@
                 <div class="white-box">
                     <div class="d-md-flex mb-3">
                         <h3 class="box-title mb-0">Demandes Approuvées</h3>
-                        <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
-                            <button>Réduire</button>
-                        </div>
+                        
                     </div>
                     <div class="table-responsive">
                         <table class="table no-wrap" id="cycle-table">
@@ -33,36 +31,34 @@
                                     <td class="border-top-0">{{pending.niveau}}</td>
                                     <td class="border-top-0">{{pending.filiere}}</td>
                                     <td class="border-top-0">{{pending.annee}}</td>
-                                    <td class="border-top-0"><i class="fa-solid fa-caret-down"
-                                            style="font-size: 1.75em;" (click)="handleClickRow(pending)"></i></td>
+                                    <td class="border-top-0"><i class="fa-solid fa-caret-down arrow-bottom" (click)="handleClickRow(pending)"></i></td>
                                 </tr>
-                                <tr *ngIf="selectedDemande === pending && displayDetails && openDetails">
-                                    <td colspan="8">
-                                        <div class="row p-4">
+                                <tr *ngIf="selectedDemande === pending && displayDetails && openDetails" @fadeInOut>
+                                    <td colspan="8" >
+                                        <div class="row p-4 moreInfo mx-auto my-3">
                                             <div class="col-sm-12 col-md-12 col-lg-6">
-                                                <h5>Informations sur l'etudiant</h5>
-                                                <img src="../../../assets/img_avatar3.png" alt="image etudiant"
-                                                    style="float: left; width: 30%;">
-                                                <span>
-                                                    <p>Code apogee:{{ currentEtudiant.code_apogee }}</p>
-                                                    <p>CNE : {{currentEtudiant.cne}} </p>
-                                                    <p>Nom : {{currentEtudiant.nom}} </p>
-                                                    <p>prenom : {{currentEtudiant.prenom}} </p>
-                                                    <p>filiere : {{pending.filiere}} </p>
-                                                    <p>niveau : {{pending.niveau}} </p>
-                                                </span>
-
+                                                <h5 class="test-center mb-4">Informations sur  <i>{{currentEtudiant.nom}} {{currentEtudiant.prenom}}</i></h5>
+                                                   <img [src]="currentEtudiant.image" alt="image etudiant"
+                                                    style="float: left; width: 150px; margin-right: 15px;">
+                                                    <span>
+                                                        <p><b>Code apogee</b>:{{ currentEtudiant.code_apogee }}</p>
+                                                        <p><b>CNE</b> : {{currentEtudiant.cne}} </p>
+                                                        <p><b>Nom</b> : {{currentEtudiant.nom}} </p>
+                                                        <p><b>prenom</b> : {{currentEtudiant.prenom}} </p>
+                                                        <p><b>Filiere</b> : {{pending.filiere}} </p>
+                                                        <p><b>Niveau</b> : {{pending.niveau}} </p>
+                                                    </span>
+ 
                                             </div>
 
                                             <div class="col-sm-12 col-md-12 col-lg-6">
-                                                <h5>Plus d'information sur la demande</h5>
-                                                <h6>{{pending.type_document}}</h6>
-                                                <span *ngFor="let infos of infosType">
+                                                <h5 class="text-center mb-5">Plus d'information sur {{pending.type_document}}</h5>
+                                                <span *ngFor="let infos of infosType" class="mt-4">
                                                     <ng-container *ngFor="let item of infos | keyvalue">
-                                                        <p>{{ item.key }}: {{ item.value }}</p>
+                                                        <p><b>{{ item.key }}</b> : {{ item.value }}</p>
                                                     </ng-container>
                                                 </span>
-                                                <button type="button" class="btn btn-primary"
+                                                <button type="button" class="btn btn-primary mt-4"
                                                     (click)="validerDemande(pending)">Valider</button>
                                             </div>
 

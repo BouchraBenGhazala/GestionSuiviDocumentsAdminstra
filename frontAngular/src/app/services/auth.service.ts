@@ -7,6 +7,7 @@ import { Route, Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService implements OnInit{
+
   private loggedIn = new BehaviorSubject<boolean>(this.toke.loggedIn());
   authStatus = this.loggedIn.asObservable();
   loginState : boolean = false;

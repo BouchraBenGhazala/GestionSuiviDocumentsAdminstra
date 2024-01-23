@@ -1,11 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DocumentService } from '../document.service'; // Assurez-vous d'ajuster le chemin
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-form-etudiant',
   templateUrl: './form-etudiant.component.html',
-  styleUrls: ['./form-etudiant.component.scss']
+  styleUrls: ['./form-etudiant.component.scss'],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('1000ms', style({ opacity: 1 })),
+      ]),
+      transition(':leave', [
+        animate('500ms', style({ opacity: 0 })),
+      ]),
+    ]),
+  ],
 })
 export class FormEtudiantComponent implements OnInit {
 

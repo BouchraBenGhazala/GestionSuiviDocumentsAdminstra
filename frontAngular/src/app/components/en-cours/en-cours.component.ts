@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DemandesData } from '../../services/dashboard/demande-data.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 
 interface Demande {
@@ -19,7 +20,18 @@ interface Demande {
 @Component({
   selector: 'app-en-cours',
   templateUrl: './en-cours.component.html',
-  styleUrl: './en-cours.component.css'
+  styleUrl: './en-cours.component.css',
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('1000ms', style({ opacity: 1 })),
+      ]),
+      transition(':leave', [
+        animate('500ms', style({ opacity: 0 })),
+      ]),
+    ]),
+  ],
 })
 
 
