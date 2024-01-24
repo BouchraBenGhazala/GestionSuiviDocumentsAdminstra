@@ -65,16 +65,19 @@ export class EnCoursComponent {
 
 
     // Faites appel à votre API pour mettre à jour la base de données
-      this.demandesPending.validerDemande(demande.id).subscribe(response => {
-        console.log('État de la demande mis à jour dans la base de données', response);}
-      // }, error => {
-      //   console.error('Erreur lors de la mise à jour de l\'état de la demande', error);
-      //   // Si la mise à jour échoue, vous voudrez probablement annuler la modification côté client
-      //   demande.etat = 'En Cours';
-      // }
+      this.demandesPending.validerDemande(demande.id).subscribe(
+        response => {
+        this.router.navigateByUrl('/dashboard');
+        console.log('État de la demande mis à jour dans la base de données', response);
+      }, error => {
+        console.error('Erreur lors de la mise à jour de l\'état de la demande', error);
+        // Si la mise à jour échoue, vous voudrez probablement annuler la modification côté client
+        demande.etat = 'En Cours';
+      }
+      
     );
 
-    this.router.navigateByUrl('/pending');
+    
 
   }
 

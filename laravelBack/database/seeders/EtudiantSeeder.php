@@ -15,6 +15,7 @@ class EtudiantSeeder extends Seeder
     {
 
         Etudiant::create([
+            'id'=> 2,
             'cne' => '123456789',
             'code_apogee' => 'AP123',
             'image' => 'https://cdn.vectorstock.com/i/preview-1x/96/75/avatar-9-vector-32409675.jpg',
@@ -25,21 +26,13 @@ class EtudiantSeeder extends Seeder
         ]);
 
         Etudiant::create([
+            'id' => 3,
             'cne' => 'Y1234',
             'code_apogee' => '45729462',
             'image' => 'https://cdn.vectorstock.com/i/preview-1x/96/75/avatar-9-vector-32409675.jpg',
             'tel' => '0608080808',
             'datenais' => '2003-06-01',
             'user_id' => 3
-        ]);
-
-        Etudiant::create([
-            'cne' => 'B45E09',
-            'code_apogee' => '429462',
-            'image' => 'https://cdn.vectorstock.com/i/preview-1x/96/75/avatar-9-vector-32409675.jpg',
-            'tel' => '0608080808',
-            'datenais' => '2003-06-01',
-            'user_id' => 4
         ]);
 
 

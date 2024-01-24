@@ -48,7 +48,7 @@ Route::post('/demande/update-etat/{id}', [DocumentController::class, 'updateEtat
 
 Route::get('/getFiltredDemandes/{state}', [ApiController::class, 'getFiltresDemandes'])->where('state', '^(Traitee|En Cours)$');
 Route::get('/getEtudiant', [ApiController::class, 'getEtudiant']);
-Route::get('/getInfosType/{type}_{id}', [ApiController::class, 'getInfosType'])->where('type', '^ConventionStage|CertificatScolarite|AttestationBourse|ReleveNotes$');
+Route::get('/getInfosType/{type}_{id}', [ApiController::class, 'getInfosType'])->where('type', '^ConventionStage|CertificatScolarite|AttestationBourse|ReleveNotes|TerrainSport$');
 
 //Dash etudiant
 Route::get('/getFiltredDemandesEtudiant/{etudiantId}/{state}', [ApiController::class, 'getFiltresDemandesEtudiant'])->where('state', '^(Traitee|En Cours)$');
